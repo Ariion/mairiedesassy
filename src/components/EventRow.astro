@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import { dateBloc } from '../data/url';
+interface Props { entry: CollectionEntry<'evenements'>; details?: boolean }
+const { entry, details = false } = Astro.props;
+const d = entry.data;
+const { jour, mois } = dateBloc(d.date);
+const { Content } = await render(entry);
+---
+<div class="event">
+  <time class="event-date" datetime={d.date.toISOString().slice(0, 10)}>
+    <span class="event-day">{jour}</span><span class="event-month">{mois}</span>
+  </time>
+  <div class="event-body">
+    <span class="event-title">{d.titre}</span>
+    <span class="event-place">{d.lieu}{d.heure && ` · ${d.heure}`}</span>
+    <span class="event-org">{d.organisateur}</span>
+    {details && <div class="event-text"><Content /></div>}
+  </div>
+</div>

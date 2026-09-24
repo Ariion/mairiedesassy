@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="stylesheet" href="_ds/modernist-a973b848-b101-4a6f-8df2-1ddc59ae139b/styles.css"><script src="_ds/modernist-a973b848-b101-4a6f-8df2-1ddc59ae139b/_ds_bundle.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet"><style>body{margin:0;background:#f0eee9;font-family:'Patrick Hand',system-ui,sans-serif;color:#201e1d}a{color:#ec3013}a:hover{color:#b8260f}.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}</style></helmet>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Accueil : 3 pistes de navigation, ordinateur + mobile. Priorités : affichage et événements, pour les habitants comme pour les visiteurs</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a"><div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Barre classique à 5 menus déroulants + menu ☰ sur mobile</div>
+<div style="display:flex;gap:20px;align-items:flex-start">
+<div class="dv-card" style="width:600px;font-size:15px">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:2px solid #201e1d"><span style="font:700 20px 'Kalam',cursive">SASSY <span style="color:#ec3013">·</span> 14170</span><div style="display:flex;gap:12px;font-size:14px"><span>Mairie ▾</span><span style="color:#ec3013;border-bottom:2px solid #ec3013">École ▾</span><span>Vie locale ▾</span><span>Découvrir ▾</span><span>Contact</span></div></div>
+<div style="position:relative;border-bottom:2px solid #201e1d">
+<img src="assets/sassy-mairie.webp" alt="Mairie de Sassy" style="display:block;width:100%;height:190px;object-fit:cover;filter:grayscale(1)">
+<div style="position:absolute;right:120px;top:0;background:#fff;border:2px solid #201e1d;border-top:none;padding:8px 12px;font-size:14px;display:flex;flex-direction:column;gap:4px;box-shadow:3px 3px 0 #201e1d"><span>Menu cantine</span><span>SIVOM</span></div>
+<div style="position:absolute;left:18px;bottom:14px;background:#fff;border:2px solid #201e1d;padding:8px 12px"><div style="font:700 26px/1 'Kalam',cursive">Bienvenue à Sassy</div><div style="font-size:13px;color:#6b6763">217 habitants · 9,56 km² · Pays de Falaise</div></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr))">
+<div style="padding:14px 18px;border-right:2px solid #201e1d;display:flex;flex-direction:column;gap:6px"><div style="font:700 18px 'Kalam',cursive;color:#ec3013">Affichage mairie</div>
+<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #cfcac4"><span>Arrêté travaux rue de la Forge</span><span style="color:#6b6763">12/09</span></div>
+<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #cfcac4"><span>CR conseil du 5 sept.</span><span style="color:#6b6763">08/09</span></div>
+<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #cfcac4"><span>Enquête publique PLUi</span><span style="color:#6b6763">01/09</span></div>
+<span style="font-size:13px;text-decoration:underline">Tout l'affichage →</span></div>
+<div style="padding:14px 18px;display:flex;flex-direction:column;gap:6px"><div style="font:700 18px 'Kalam',cursive;color:#ec3013">Événements</div>
+<div style="display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #cfcac4"><span style="font:700 16px 'Kalam',cursive;flex:none;width:64px;white-space:nowrap">12 OCT</span><span>Repas des aînés</span></div>
+<div style="display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #cfcac4"><span style="font:700 16px 'Kalam',cursive;flex:none;width:64px;white-space:nowrap">02 NOV</span><span>Balade patrimoine</span></div>
+<div style="display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #cfcac4"><span style="font:700 16px 'Kalam',cursive;flex:none;width:64px;white-space:nowrap">11 NOV</span><span>Cérémonie au monument</span></div>
+<span style="font-size:13px;text-decoration:underline">Agenda complet →</span></div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);border-top:2px solid #201e1d;background:#201e1d;color:#fff;font-size:13px;line-height:1.35">
+<div style="padding:12px 18px"><b>Mairie</b><br>2 rue de la Forge<br>02 31 90 06 26</div>
+<div style="padding:12px 18px">Lun 11h–12h<br>Jeu 14h–15h<br>Sam 8h–12h (sur RDV)</div>
+<div style="padding:12px 18px">mairiedesassy<br>@wanadoo.fr</div>
+</div>
+</div>
+<div class="dv-card" style="width:260px;font-size:14px">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:2px solid #201e1d"><span style="font:700 18px 'Kalam',cursive">SASSY</span><span style="border:2px solid #201e1d;padding:2px 8px">☰</span></div>
+<img src="assets/sassy-mairie.webp" alt="" style="display:block;width:100%;height:120px;object-fit:cover;filter:grayscale(1);border-bottom:2px solid #201e1d">
+<div style="padding:10px 14px;border-bottom:2px solid #201e1d"><div style="font:700 20px/1 'Kalam',cursive">Bienvenue à Sassy</div></div>
+<div style="padding:10px 14px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:4px"><div style="font:700 16px 'Kalam',cursive;color:#ec3013">Affichage</div><span>Arrêté travaux · 12/09</span><span>CR conseil · 08/09</span></div>
+<div style="padding:10px 14px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:4px"><div style="font:700 16px 'Kalam',cursive;color:#ec3013">Événements</div><span>12 oct · Repas des aînés</span><span>02 nov · Balade patrimoine</span></div>
+<div style="padding:10px 14px;background:#201e1d;color:#fff;display:flex;justify-content:space-between"><span>📞 Appeler la mairie</span><span>→</span></div>
+</div>
+</div></div>
+
+<div class="dv-opt" id="2b"><div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Deux portes (« J'habite Sassy » / « Je découvre Sassy ») + méga-menu · barre d'onglets en bas sur mobile</div>
+<div style="display:flex;gap:20px;align-items:flex-start">
+<div class="dv-card" style="width:600px;font-size:15px">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:2px solid #201e1d"><span style="font:700 20px 'Kalam',cursive">SASSY</span><div style="display:flex;gap:14px;font-size:14px;align-items:center"><span style="border:2px solid #201e1d;padding:2px 10px;background:#201e1d;color:#fff">Toutes les rubriques ▾</span><span>Contact</span></div></div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-bottom:2px solid #201e1d;background:#faf9f7;font-size:13px">
+<div style="padding:10px 14px;border-right:1px solid #cfcac4;display:flex;flex-direction:column;gap:3px"><b style="color:#ec3013">Mairie</b><span>Affichage</span><span>Comptes rendus</span><span>Le conseil</span><span>Location de salle</span></div>
+<div style="padding:10px 14px;border-right:1px solid #cfcac4;display:flex;flex-direction:column;gap:3px"><b style="color:#ec3013">École</b><span>Menu cantine</span><span>SIVOM</span></div>
+<div style="padding:10px 14px;border-right:1px solid #cfcac4;display:flex;flex-direction:column;gap:3px"><b style="color:#ec3013">Vie locale</b><span>Événements · Blog</span><span>Revues · Annuaire</span></div>
+<div style="padding:10px 14px;display:flex;flex-direction:column;gap:3px"><b style="color:#ec3013">Découvrir</b><span>Histoire · Patrimoine</span><span>Photos · Carte</span></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:2px solid #201e1d">
+<div style="border-right:2px solid #201e1d;display:flex;flex-direction:column"><img src="assets/sassy-mairie.webp" alt="" style="display:block;width:100%;height:120px;object-fit:cover;filter:grayscale(1);border-bottom:2px solid #201e1d"><div style="padding:12px 16px;display:flex;flex-direction:column;gap:4px"><div style="font:700 22px/1 'Kalam',cursive">J'habite Sassy →</div><span style="font-size:13px;color:#6b6763">Affichage, cantine, salle, démarches</span></div></div>
+<div style="display:flex;flex-direction:column"><img src="assets/sassy-eglise.webp" alt="" style="display:block;width:100%;height:120px;object-fit:cover;filter:grayscale(1);border-bottom:2px solid #201e1d"><div style="padding:12px 16px;display:flex;flex-direction:column;gap:4px"><div style="font:700 22px/1 'Kalam',cursive">Je découvre Sassy →</div><span style="font-size:13px;color:#6b6763">Église XIIᵉ, Châtel, Vauquelin, carte</span></div></div>
+</div>
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+<div style="padding:14px 18px;border-right:2px solid #201e1d"><div style="font:700 18px 'Kalam',cursive;color:#ec3013">À l'affichage</div><div style="padding:6px 0;border-bottom:1px solid #cfcac4">Arrêté travaux rue de la Forge</div><div style="padding:6px 0;border-bottom:1px solid #cfcac4">CR conseil du 5 sept.</div></div>
+<div style="padding:14px 18px"><div style="font:700 18px 'Kalam',cursive;color:#ec3013">À venir</div><div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:6px"><div style="border:2px solid #201e1d;padding:8px"><div style="font:700 18px 'Kalam',cursive">12 OCT</div>Repas des aînés</div><div style="border:2px solid #201e1d;padding:8px"><div style="font:700 18px 'Kalam',cursive">02 NOV</div>Balade patrimoine</div></div></div>
+</div>
+</div>
+<div class="dv-card" style="width:260px;font-size:14px;display:flex;flex-direction:column">
+<div style="padding:10px 14px;border-bottom:2px solid #201e1d;font:700 18px 'Kalam',cursive">SASSY</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:2px solid #201e1d">
+<div style="border-right:2px solid #201e1d"><img src="assets/sassy-mairie.webp" alt="" style="display:block;width:100%;height:70px;object-fit:cover;filter:grayscale(1)"><div style="padding:6px 8px;font:700 14px 'Kalam',cursive">J'habite →</div></div>
+<div><img src="assets/sassy-eglise.webp" alt="" style="display:block;width:100%;height:70px;object-fit:cover;filter:grayscale(1)"><div style="padding:6px 8px;font:700 14px 'Kalam',cursive">Je découvre →</div></div>
+</div>
+<div style="padding:10px 14px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:4px"><div style="font:700 16px 'Kalam',cursive;color:#ec3013">À l'affichage</div><span>Arrêté travaux · 12/09</span></div>
+<div style="padding:10px 14px;display:flex;flex-direction:column;gap:4px"><div style="font:700 16px 'Kalam',cursive;color:#ec3013">À venir</div><span>12 oct · Repas des aînés</span></div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid #201e1d;font-size:12px;text-align:center">
+<span style="padding:10px 0;background:#201e1d;color:#fff">Accueil</span><span style="padding:10px 0">Mairie</span><span style="padding:10px 0">Agenda</span><span style="padding:10px 0">Plus</span></div>
+</div>
+</div></div>
+
+<div class="dv-opt" id="2c"><div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Menu latéral toujours visible + fil « Cette semaine à Sassy » · rubriques en pastilles défilantes sur mobile</div>
+<div style="display:flex;gap:20px;align-items:flex-start">
+<div class="dv-card" style="width:600px;font-size:15px;display:grid;grid-template-columns:150px minmax(0,1fr)">
+<div style="border-right:2px solid #201e1d;padding:14px;display:flex;flex-direction:column;gap:12px;font-size:13px">
+<div style="font:700 20px/1 'Kalam',cursive">SASSY<div style="font:400 12px 'Patrick Hand';color:#6b6763">14170 · Calvados</div></div>
+<div style="display:flex;flex-direction:column;gap:3px"><b style="color:#ec3013">Mairie</b><span>Affichage</span><span>Comptes rendus</span><span>Le conseil</span><span>Location salle</span></div>
+<div style="display:flex;flex-direction:column;gap:3px"><b style="color:#ec3013">École</b><span>Cantine</span><span>SIVOM</span></div>
+<div style="display:flex;flex-direction:column;gap:3px"><b style="color:#ec3013">Vie locale</b><span>Événements</span><span>Blog</span><span>Revues</span><span>Annuaire</span></div>
+<div style="display:flex;flex-direction:column;gap:3px"><b style="color:#ec3013">Découvrir</b><span>Histoire</span><span>Patrimoine</span><span>Photos</span><span>Carte</span></div>
+<div style="border-top:2px solid #201e1d;padding-top:8px;line-height:1.35">Lun 11h–12h<br>Jeu 14h–15h<br>Sam 8h–12h (RDV)<br>02 31 90 06 26</div>
+</div>
+<div style="display:flex;flex-direction:column">
+<div style="position:relative;border-bottom:2px solid #201e1d"><img src="assets/sassy-eglise.webp" alt="Église de Sassy" style="display:block;width:100%;height:150px;object-fit:cover;filter:grayscale(1)"><div style="position:absolute;left:14px;bottom:12px;background:#ec3013;color:#fff;padding:6px 10px;font:700 24px/1 'Kalam',cursive">Cette semaine à Sassy</div></div>
+<div style="display:flex;flex-direction:column">
+<div style="display:grid;grid-template-columns:70px minmax(0,1fr) 80px;gap:10px;padding:10px 16px;border-bottom:1px solid #cfcac4;align-items:baseline"><span style="font:700 15px 'Kalam',cursive">12/09</span><span>Arrêté : travaux rue de la Forge</span><span style="font-size:12px;border:1.5px solid #201e1d;padding:1px 6px;text-align:center">AFFICHAGE</span></div>
+<div style="display:grid;grid-template-columns:70px minmax(0,1fr) 80px;gap:10px;padding:10px 16px;border-bottom:1px solid #cfcac4;align-items:baseline"><span style="font:700 15px 'Kalam',cursive">08/09</span><span>Compte rendu du conseil du 5 sept.</span><span style="font-size:12px;border:1.5px solid #201e1d;padding:1px 6px;text-align:center">AFFICHAGE</span></div>
+<div style="display:grid;grid-template-columns:70px minmax(0,1fr) 80px;gap:10px;padding:10px 16px;border-bottom:1px solid #cfcac4;align-items:baseline;background:#fdf1ee"><span style="font:700 15px 'Kalam',cursive;color:#ec3013">12/10</span><span>Repas des aînés · salle communale</span><span style="font-size:12px;background:#ec3013;color:#fff;padding:2px 6px;text-align:center">ÉVÉNEMENT</span></div>
+<div style="display:grid;grid-template-columns:70px minmax(0,1fr) 80px;gap:10px;padding:10px 16px;border-bottom:1px solid #cfcac4;align-items:baseline;background:#fdf1ee"><span style="font:700 15px 'Kalam',cursive;color:#ec3013">02/11</span><span>Balade patrimoine · église XIIᵉ</span><span style="font-size:12px;background:#ec3013;color:#fff;padding:2px 6px;text-align:center">ÉVÉNEMENT</span></div>
+<div style="display:grid;grid-template-columns:70px minmax(0,1fr) 80px;gap:10px;padding:10px 16px;align-items:baseline"><span style="font:700 15px 'Kalam',cursive">01/09</span><span>Blog asso. patrimoine : le porche Vauquelin</span><span style="font-size:12px;border:1.5px solid #201e1d;padding:1px 6px;text-align:center">BLOG</span></div>
+</div>
+<div style="padding:10px 16px;border-top:2px solid #201e1d;font-size:13px;display:flex;gap:10px"><span style="border:2px solid #201e1d;padding:2px 8px;background:#201e1d;color:#fff">Tout</span><span style="border:2px solid #201e1d;padding:2px 8px">Affichage</span><span style="border:2px solid #201e1d;padding:2px 8px">Événements</span><span style="border:2px solid #201e1d;padding:2px 8px">Blog</span></div>
+</div>
+</div>
+<div class="dv-card" style="width:260px;font-size:14px">
+<div style="padding:10px 14px;border-bottom:2px solid #201e1d;font:700 18px 'Kalam',cursive">SASSY</div>
+<div style="display:flex;gap:6px;padding:8px 10px;border-bottom:2px solid #201e1d;overflow:hidden;font-size:12px;white-space:nowrap"><span style="border:2px solid #201e1d;padding:2px 8px">Mairie</span><span style="border:2px solid #201e1d;padding:2px 8px">Cantine</span><span style="border:2px solid #201e1d;padding:2px 8px">Agenda</span><span style="border:2px solid #201e1d;padding:2px 8px">Salle</span><span style="border:2px solid #201e1d;padding:2px 8px">Histoire…</span></div>
+<div style="position:relative;border-bottom:2px solid #201e1d"><img src="assets/sassy-eglise.webp" alt="" style="display:block;width:100%;height:100px;object-fit:cover;filter:grayscale(1)"><div style="position:absolute;left:10px;bottom:8px;background:#ec3013;color:#fff;padding:4px 8px;font:700 16px 'Kalam',cursive">Cette semaine</div></div>
+<div style="padding:8px 14px;border-bottom:1px solid #cfcac4"><b>12/09</b> Arrêté travaux</div>
+<div style="padding:8px 14px;border-bottom:1px solid #cfcac4;background:#fdf1ee"><b style="color:#ec3013">12/10</b> Repas des aînés</div>
+<div style="padding:8px 14px;border-bottom:2px solid #201e1d;background:#fdf1ee"><b style="color:#ec3013">02/11</b> Balade patrimoine</div>
+<div style="padding:10px 14px;font-size:13px;line-height:1.35">Mairie · Lun 11h–12h · Jeu 14h–15h<br>02 31 90 06 26</div>
+</div>
+</div></div>
+
+</div>
+<p class="dv-next">Ensuite : "pars sur <a class="dv-oid" href="#2a">2a</a> avec le fil de <a class="dv-oid" href="#2c">2c</a>" · "garde les deux portes de <a class="dv-oid" href="#2b">2b</a>" · "wireframe Location de salle et Blog"</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Arborescence + 4 pistes pour l'accueil (ordinateur)</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a"><div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Arborescence : 17 rubriques en 5 menus</div>
+<div class="dv-card" style="width:560px;padding:24px;box-sizing:border-box;display:flex;flex-direction:column;gap:14px">
+<div style="font:700 22px 'Kalam',cursive">Plan du site</div>
+<div style="border:2px solid #201e1d;padding:8px 12px;font-size:18px;align-self:flex-start;background:#201e1d;color:#fff">Accueil</div>
+<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="border:2px solid #ec3013;color:#ec3013;padding:6px;font:700 15px 'Kalam',cursive">Mairie</div><div style="font-size:14px;line-height:1.3;display:flex;flex-direction:column;gap:4px"><span>Infos mairie</span><span>Affichage</span><span>Comptes rendus</span><span>Le conseil</span><span>Location de salle</span></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="border:2px solid #ec3013;color:#ec3013;padding:6px;font:700 15px 'Kalam',cursive">École</div><div style="font-size:14px;line-height:1.3;display:flex;flex-direction:column;gap:4px"><span>Menu cantine</span><span>SIVOM</span></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="border:2px solid #ec3013;color:#ec3013;padding:6px;font:700 15px 'Kalam',cursive">Vie locale</div><div style="font-size:14px;line-height:1.3;display:flex;flex-direction:column;gap:4px"><span>Événements</span><span>Blog</span><span>Revue mensuelle</span><span>Revue trimestrielle</span><span>Annuaire pro</span></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="border:2px solid #ec3013;color:#ec3013;padding:6px;font:700 15px 'Kalam',cursive">Découvrir</div><div style="font-size:14px;line-height:1.3;display:flex;flex-direction:column;gap:4px"><span>Histoire</span><span>Patrimoine (asso.)</span><span>Photos</span><span>Carte</span></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><div style="border:2px solid #ec3013;color:#ec3013;padding:6px;font:700 15px 'Kalam',cursive">Contact</div><div style="font-size:14px;line-height:1.3;display:flex;flex-direction:column;gap:4px"><span>Contact</span><span>Infos utiles</span></div></div>
+</div>
+<div style="font-size:14px;color:#6b6763;border-top:2px dashed #cfcac4;padding-top:10px">Revues = PDF téléchargeables. Blog : articles + commentaires modérés.</div>
+</div></div>
+
+<div class="dv-opt" id="1b"><div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Portail pratique : l'affichage mairie en premier</div>
+<div class="dv-card" style="width:560px;font-size:15px">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:2px solid #201e1d"><span style="font:700 20px 'Kalam',cursive">SASSY <span style="color:#ec3013">·</span> 14170</span><div style="display:flex;gap:12px;font-size:14px"><span>Mairie</span><span>École</span><span>Vie locale</span><span>Découvrir</span><span>Contact</span></div></div>
+<div style="display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr)">
+<div style="padding:16px 18px;border-right:2px solid #201e1d;display:flex;flex-direction:column;gap:10px">
+<div style="font:700 18px 'Kalam',cursive;color:#ec3013">Affichage mairie</div>
+<div style="display:flex;flex-direction:column;gap:0">
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #cfcac4"><span>Arrêté — travaux rue de la Forge</span><span style="color:#6b6763">12/09</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #cfcac4"><span>CR conseil municipal du 5 sept.</span><span style="color:#6b6763">08/09</span></div>
+<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #cfcac4"><span>Enquête publique PLUi</span><span style="color:#6b6763">01/09</span></div>
+</div>
+<div style="font-size:13px;text-decoration:underline">Tout l'affichage →</div>
+<div style="font:700 18px 'Kalam',cursive;margin-top:6px">Prochains événements</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px"><div style="border:2px solid #201e1d;padding:8px"><div style="font:700 20px 'Kalam',cursive">12 OCT</div>Repas des aînés</div><div style="border:2px solid #201e1d;padding:8px"><div style="font:700 20px 'Kalam',cursive">02 NOV</div>Balade patrimoine</div></div>
+</div>
+<div style="display:flex;flex-direction:column">
+<div style="padding:14px;border-bottom:2px solid #201e1d;background:#201e1d;color:#fff"><div style="font:700 16px 'Kalam',cursive">Mairie</div><div style="font-size:13px;line-height:1.35">2 rue de la Forge<br>Horaires : [à compléter]<br>mairiedesassy@wanadoo.fr</div></div>
+<div style="padding:14px;border-bottom:2px solid #201e1d"><div style="font:700 16px 'Kalam',cursive">Cantine · cette semaine</div><div style="font-size:13px;line-height:1.4">Lun · Mar · Jeu · Ven<br><span style="color:#6b6763">menu du jour…</span></div></div>
+<div style="padding:14px"><div style="font:700 16px 'Kalam',cursive">Revue de sept.</div><div style="height:60px;border:2px solid #201e1d;margin-top:6px;background:repeating-linear-gradient(45deg,#fff 0 6px,#e8e6e3 6px 7px);display:flex;align-items:center;justify-content:center;font-size:12px">PDF</div></div>
+</div>
+</div>
+<div style="padding:10px 18px;border-top:2px solid #201e1d;font-size:13px;color:#6b6763">Pied de page : contact · infos utiles · carte · mentions</div>
+</div></div>
+
+<div class="dv-opt" id="1c"><div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Tuiles : une case par rubrique, grille visible</div>
+<div class="dv-card" style="width:560px;font-size:15px">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:2px solid #201e1d"><span style="font:700 20px 'Kalam',cursive">SASSY</span><span style="font-size:14px;border:2px solid #201e1d;padding:2px 10px">☰ Menu</span></div>
+<div style="padding:18px;border-bottom:2px solid #201e1d;display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:14px;align-items:end"><div><div style="font:700 30px/1 'Kalam',cursive">Bienvenue à Sassy</div><div style="color:#6b6763;margin-top:6px">217 habitants · Pays de Falaise</div></div><div style="height:80px;border:2px solid #201e1d;background:repeating-linear-gradient(45deg,#fff 0 6px,#e8e6e3 6px 7px);display:flex;align-items:center;justify-content:center;font-size:12px">photo N&amp;B</div></div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr))">
+<div style="padding:14px 10px;border-right:2px solid #201e1d;border-bottom:2px solid #201e1d;background:#ec3013;color:#fff;font:700 16px 'Kalam',cursive">Affichage<div style="font:400 12px 'Patrick Hand';margin-top:18px">3 nouveaux</div></div>
+<div style="padding:14px 10px;border-right:2px solid #201e1d;border-bottom:2px solid #201e1d;font:700 16px 'Kalam',cursive">Cantine</div>
+<div style="padding:14px 10px;border-right:2px solid #201e1d;border-bottom:2px solid #201e1d;font:700 16px 'Kalam',cursive">Événements</div>
+<div style="padding:14px 10px;border-bottom:2px solid #201e1d;font:700 16px 'Kalam',cursive">Blog</div>
+<div style="padding:14px 10px;border-right:2px solid #201e1d;border-bottom:2px solid #201e1d;font:700 16px 'Kalam',cursive">Conseil</div>
+<div style="padding:14px 10px;border-right:2px solid #201e1d;border-bottom:2px solid #201e1d;font:700 16px 'Kalam',cursive">Salle</div>
+<div style="padding:14px 10px;border-right:2px solid #201e1d;border-bottom:2px solid #201e1d;font:700 16px 'Kalam',cursive">SIVOM</div>
+<div style="padding:14px 10px;border-bottom:2px solid #201e1d;font:700 16px 'Kalam',cursive">Revues</div>
+<div style="padding:14px 10px;border-right:2px solid #201e1d;font:700 16px 'Kalam',cursive">Histoire</div>
+<div style="padding:14px 10px;border-right:2px solid #201e1d;font:700 16px 'Kalam',cursive">Photos</div>
+<div style="padding:14px 10px;border-right:2px solid #201e1d;font:700 16px 'Kalam',cursive">Annuaire</div>
+<div style="padding:14px 10px;font:700 16px 'Kalam',cursive">Carte</div>
+</div>
+<div style="padding:10px 18px;border-top:2px solid #201e1d;font-size:13px;color:#6b6763">Chaque tuile = 1 page. Idéal mobile (2 colonnes).</div>
+</div></div>
+
+<div class="dv-opt" id="1d"><div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a>Journal du village : blog et revue en une</div>
+<div class="dv-card" style="width:560px;font-size:15px">
+<div style="padding:14px 18px 8px;border-bottom:2px solid #201e1d"><div style="display:flex;justify-content:space-between;font-size:13px;color:#6b6763"><span>Mairie · École · Vie locale · Découvrir · Contact</span><span>n° sept. 2026</span></div><div style="font:700 40px/1 'Kalam',cursive;margin-top:6px">Le Sassy</div></div>
+<div style="display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr)">
+<div style="padding:16px 18px;border-right:2px solid #201e1d;display:flex;flex-direction:column;gap:8px"><div style="height:130px;border:2px solid #201e1d;background:repeating-linear-gradient(45deg,#fff 0 6px,#e8e6e3 6px 7px);display:flex;align-items:center;justify-content:center;font-size:12px">photo article</div><span style="color:#ec3013;font-size:13px">BLOG · Association patrimoine</span><div style="font:700 20px/1.1 'Kalam',cursive">Le porche Vauquelin retrouve ses pierres</div><div style="height:6px;background:#e3e0dc"></div><div style="height:6px;background:#e3e0dc;width:80%"></div><span style="font-size:13px;color:#6b6763">💬 4 commentaires</span></div>
+<div style="display:flex;flex-direction:column">
+<div style="padding:12px 14px;border-bottom:2px solid #201e1d"><span style="color:#ec3013;font-size:13px">AFFICHAGE</span><div>CR conseil du 5 sept.</div></div>
+<div style="padding:12px 14px;border-bottom:2px solid #201e1d"><span style="color:#ec3013;font-size:13px">AGENDA</span><div>12 oct · Repas des aînés</div></div>
+<div style="padding:12px 14px;border-bottom:2px solid #201e1d"><span style="color:#ec3013;font-size:13px">CANTINE</span><div>Menu de la semaine</div></div>
+<div style="padding:12px 14px"><span style="color:#ec3013;font-size:13px">REVUES</span><div>Mensuelle · Trimestrielle</div></div>
+</div></div>
+<div style="padding:10px 18px;border-top:2px solid #201e1d;font-size:13px;color:#6b6763">Ton éditorial, met en avant la vie associative.</div>
+</div></div>
+
+<div class="dv-opt" id="1e"><div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a>Carte d'abord : le village comme point d'entrée</div>
+<div class="dv-card" style="width:560px;font-size:15px">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:2px solid #201e1d"><span style="font:700 20px 'Kalam',cursive">SASSY</span><div style="display:flex;gap:12px;font-size:14px"><span>Mairie</span><span>École</span><span>Vie locale</span><span>Découvrir</span><span>Contact</span></div></div>
+<div style="position:relative;height:230px;border-bottom:2px solid #201e1d;background:repeating-linear-gradient(0deg,#fff 0 22px,#eeebe7 22px 23px),#fff">
+<div style="position:absolute;left:20px;top:18px;background:#fff;border:2px solid #201e1d;padding:10px 12px;max-width:190px"><div style="font:700 22px/1 'Kalam',cursive">Sassy, 14170</div><div style="font-size:13px;color:#6b6763;margin-top:4px">Village normand, 10 km²</div></div>
+<div style="position:absolute;left:250px;top:70px;display:flex;align-items:center;gap:6px"><span style="width:14px;height:14px;background:#ec3013;display:block"></span>Mairie</div>
+<div style="position:absolute;left:330px;top:120px;display:flex;align-items:center;gap:6px"><span style="width:14px;height:14px;background:#201e1d;display:block"></span>Église XIIᵉ</div>
+<div style="position:absolute;left:180px;top:160px;display:flex;align-items:center;gap:6px"><span style="width:14px;height:14px;background:#201e1d;display:block"></span>Salle communale</div>
+<div style="position:absolute;left:420px;top:40px;display:flex;align-items:center;gap:6px"><span style="width:14px;height:14px;background:#201e1d;display:block"></span>Châtel</div>
+<div style="position:absolute;right:12px;bottom:10px;font-size:12px;color:#6b6763">carte interactive</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr))">
+<div style="padding:12px 14px;border-right:2px solid #201e1d"><div style="font:700 16px 'Kalam',cursive">Affichage</div><div style="font-size:13px;color:#6b6763">3 documents récents</div></div>
+<div style="padding:12px 14px;border-right:2px solid #201e1d"><div style="font:700 16px 'Kalam',cursive">Agenda</div><div style="font-size:13px;color:#6b6763">12 oct · aînés</div></div>
+<div style="padding:12px 14px"><div style="font:700 16px 'Kalam',cursive">Annuaire pro</div><div style="font-size:13px;color:#6b6763">artisans, gîtes…</div></div>
+</div></div></div>
+
+</div>
+<p class="dv-next">Ensuite : "pars sur <a class="dv-oid" href="#1b">1b</a> avec les tuiles de <a class="dv-oid" href="#1c">1c</a>" · "wireframe les pages Location de salle et Blog" · "montre la version mobile"</p>
+</section>
+</x-dc>
+</body>
+</html>

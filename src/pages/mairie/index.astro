@@ -1,0 +1,38 @@
+---
+import Page from '../../layouts/Page.astro';
+import { mairie } from '../../data/site';
+import { url } from '../../data/url';
+---
+<Page section="Mairie" title="Infos mairie" lead="Adresse, horaires d’ouverture et démarches : tout ce qu’il faut savoir pour venir en mairie de Sassy.">
+  <div class="layout-aside">
+    <div class="prose">
+      <h2>Le secrétariat de mairie</h2>
+      <p>Le secrétariat vous accueille aux heures de permanence pour l’état civil, l’urbanisme, les listes électorales, la location de la salle communale et toute question sur la vie de la commune. En dehors de ces horaires, laissez un message ou écrivez-nous : nous vous répondons au plus vite.</p>
+      <h2>Démarches courantes</h2>
+      <ul>
+        <li><strong>État civil</strong> : actes de naissance, de mariage et de décès, sur demande en mairie ou en ligne sur <a href="https://www.service-public.fr/particuliers/vosdroits/N359">service-public.fr</a>.</li>
+        <li><strong>Carte d’identité et passeport</strong> : à demander dans une mairie équipée d’un dispositif de recueil (à Falaise, par exemple), après une pré-demande sur <a href="https://ants.gouv.fr">ants.gouv.fr</a>.</li>
+        <li><strong>Urbanisme</strong> : permis de construire, déclarations préalables et certificats d’urbanisme se déposent en mairie.</li>
+        <li><strong>Listes électorales</strong> : inscription en mairie ou en ligne, avec une pièce d’identité et un justificatif de domicile.</li>
+        <li><strong>Recensement citoyen</strong> : obligatoire pour les jeunes dans les trois mois qui suivent leurs 16 ans.</li>
+      </ul>
+      <h2>Intercommunalité</h2>
+      <p>Sassy fait partie de la <a href={mairie.interco.url}>{mairie.interco.nom}</a>, qui gère notamment la collecte des déchets, l’urbanisme intercommunal (PLUi) et plusieurs services à la population.</p>
+    </div>
+    <aside>
+      <div class="box box-green">
+        <h2>Horaires d’ouverture</h2>
+        <dl class="dl">
+          {mairie.horaires.map((h) => (<><dt>{h.jour}</dt><dd>{h.heures}{h.note && <span style="font-weight:400"> ({h.note})</span>}</dd></>))}
+        </dl>
+      </div>
+      <div class="box">
+        <h2>Nous trouver</h2>
+        <p><strong>Mairie de Sassy</strong><br />{mairie.adresse[0]}<br />{mairie.adresse[1]}</p>
+        <p>Tél. et fax : <a href={mairie.telephoneHref}>{mairie.telephone}</a><br /><a href={`mailto:${mairie.email}`}>{mairie.email}</a></p>
+        <p>Maire : {mairie.maire}</p>
+        <a class="btn btn-secondary" href={url('decouvrir/carte/')}>Voir sur la carte →</a>
+      </div>
+    </aside>
+  </div>
+</Page>

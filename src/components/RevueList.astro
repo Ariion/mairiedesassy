@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import { url } from '../data/url';
+
+interface Props { type: 'mensuelle' | 'trimestrielle' }
+const { type } = Astro.props;
+const revues = (await getCollection('revues', (r) => r.data.type === type)).sort((a, b) => +b.data.date - +a.data.date);
+const annees = [...new Set(revues.map((r) => r.data.date.getFullYear()))];
+---
+{revues.length === 0 && <p class="empty">Aucun numéro en ligne pour le moment.</p>}
+{annees.map((a) => (
+  <section class="section">
+    <div class="sec-head"><h2>{a}</h2></div>
+    <ul class="archive">
+      {revues.filter((r) => r.data.date.getFullYear() === a).map((r) => (
+        <li>
+          <span class="notice-date">N° {r.data.numero}</span>
+          <span class="notice-title">{r.data.titre}</span>
+          {r.data.fichier
+            ? <a class="btn btn-secondary" href={url(r.data.fichier)} download>PDF ↓</a>
+            : <span class="tag tag-neutral">Disponible en mairie</span>}
+        </li>
+      ))}
+    </ul>
+  </section>
+))}

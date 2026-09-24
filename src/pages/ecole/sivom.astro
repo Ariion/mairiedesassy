@@ -1,0 +1,34 @@
+---
+import Page from '../../layouts/Page.astro';
+import PostCard from '../../components/PostCard.astro';
+import { articlesRecents } from '../../data/queries';
+import { url } from '../../data/url';
+import { mairie } from '../../data/site';
+
+const posts = (await articlesRecents()).filter((p) => p.data.auteur === 'SIVOM').slice(0, 3);
+---
+<Page section="École & cantine" title="Le SIVOM" lead="Le SIVOM organise la scolarité des enfants de Sassy et des communes voisines : école, cantine, garderie et transport scolaire.">
+  <div class="layout-aside">
+    <div class="prose">
+      <h2>Missions</h2>
+      <ul>
+        <li>Fonctionnement de l’école et entretien des locaux ;</li>
+        <li>restauration scolaire (voir le <a href={url('ecole/menu-cantine/')}>menu de la cantine</a>) ;</li>
+        <li>garderie périscolaire ;</li>
+        <li>organisation des sorties et de la kermesse de fin d’année, avec les familles et les bénévoles.</li>
+      </ul>
+      <h2>Inscriptions</h2>
+      <p>Pour inscrire votre enfant à l’école, à la cantine ou à la garderie, adressez-vous d’abord à la mairie de Sassy, qui vous orientera vers le SIVOM et l’école.</p>
+    </div>
+    <aside class="box box-green">
+      <h2>Contact</h2>
+      <p>Mairie de Sassy<br /><a href={mairie.telephoneHref}>{mairie.telephone}</a><br /><a href={`mailto:${mairie.email}?subject=École / SIVOM`}>{mairie.email}</a></p>
+    </aside>
+  </div>
+  {posts.length > 0 && (
+    <section class="section" style="padding-top:48px">
+      <div class="sec-head"><h2>Actualités du SIVOM</h2><a class="btn btn-ghost" href={url('vie-locale/blog/')}>Le blog →</a></div>
+      <div class="posts">{posts.map((p) => <PostCard entry={p} />)}</div>
+    </section>
+  )}
+</Page>

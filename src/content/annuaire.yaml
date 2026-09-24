@@ -1,0 +1,18 @@
+# Annuaire professionnel de Sassy.
+# EXEMPLES FICTIFS : à remplacer par les vraies entreprises (avec leur accord).
+# Catégories possibles : Agriculture · Artisanat · Hébergement · Commerce & services
+- id: exemple-ferme
+  nom: "Exploitation agricole (exemple)"
+  activite: Polyculture, élevage
+  categorie: Agriculture
+  adresse: Sassy
+- id: exemple-artisan
+  nom: "Menuiserie (exemple)"
+  activite: Menuiserie, charpente
+  categorie: Artisanat
+  adresse: Sassy
+- id: exemple-gite
+  nom: "Gîte rural (exemple)"
+  activite: Location saisonnière
+  categorie: Hébergement
+  adresse: Sassy

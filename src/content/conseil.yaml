@@ -1,0 +1,14 @@
+# Le conseil municipal compte 11 membres : le maire, 2 adjoints et 8 conseillers.
+# À COMPLÉTER : noms des adjoints et conseillers (à vérifier après les élections de 2026).
+- id: maire
+  nom: M. Dominique Varin
+  fonction: Maire
+  ordre: 1
+- id: adjoint-1
+  nom: À compléter
+  fonction: 1er adjoint
+  ordre: 2
+- id: adjoint-2
+  nom: À compléter
+  fonction: 2e adjoint
+  ordre: 3

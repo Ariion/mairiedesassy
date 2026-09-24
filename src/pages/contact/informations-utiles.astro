@@ -1,0 +1,35 @@
+---
+import Page from '../../layouts/Page.astro';
+import { mairie } from '../../data/site';
+
+const urgences = [
+  { n: '15', l: 'SAMU' },
+  { n: '17', l: 'Police · Gendarmerie' },
+  { n: '18', l: 'Pompiers' },
+  { n: '112', l: 'Urgences (Europe)' },
+  { n: '114', l: 'Urgences par SMS (sourds et malentendants)' },
+  { n: '3237', l: 'Pharmacie de garde' },
+];
+const liens = [
+  { t: mairie.interco.nom, d: 'Déchets, urbanisme (PLUi), services intercommunaux.', href: mairie.interco.url },
+  { t: 'Service-public.fr', d: 'Toutes les démarches administratives en ligne.', href: 'https://www.service-public.fr' },
+  { t: 'ANTS', d: 'Carte d’identité, passeport, permis de conduire, carte grise.', href: 'https://ants.gouv.fr' },
+  { t: 'Préfecture du Calvados', d: 'Informations et démarches départementales.', href: 'https://www.calvados.gouv.fr' },
+  { t: 'Département du Calvados', d: 'Routes, collèges, action sociale.', href: 'https://www.calvados.fr' },
+  { t: 'Nomad (transports)', d: 'Cars régionaux et transport scolaire en Normandie.', href: 'https://www.normandie.fr/nomad' },
+];
+---
+<Page section="Contact" title="Informations utiles" lead="Numéros d’urgence, services publics et liens pratiques pour les habitants de Sassy.">
+  <section class="section">
+    <div class="sec-head"><h2>Numéros d’urgence</h2></div>
+    <div class="stats" style="border-top:0">
+      {urgences.map((u) => <div class="stat"><a class="stat-n" href={`tel:${u.n}`} style="text-decoration:none">{u.n}</a><span class="stat-l">{u.l}</span></div>)}
+    </div>
+  </section>
+  <section class="section">
+    <div class="sec-head"><h2>Services et démarches</h2></div>
+    <div class="cards" style="padding-top:24px">
+      {liens.map((l) => <div class="card-line"><h3><a href={l.href}>{l.t}</a></h3><p>{l.d}</p></div>)}
+    </div>
+  </section>
+</Page>

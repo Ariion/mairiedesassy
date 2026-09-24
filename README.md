@@ -1,0 +1,62 @@
+# Site de la commune de Sassy (14170, Calvados)
+
+Site vitrine de la mairie de Sassy, construit avec [Astro](https://astro.build) d’après la maquette Claude Design (`docs/design/`).
+Il s’agit d’un site statique, sans base de données ni cookie. La police Archivo est hébergée sur le site.
+
+## Démarrer
+
+```bash
+npm install
+npm run dev      # http://localhost:4321/mairiedesassy/
+npm run build    # vérification TypeScript + génération dans dist/
+```
+
+## Mise en ligne (GitHub Pages)
+
+Le workflow `.github/workflows/deploy.yml` publie le site à chaque push sur `main`, avec en plus une reconstruction chaque matin pour garder l’agenda à jour.
+Une seule activation est nécessaire : **Settings → Pages → Source : GitHub Actions**.
+Adresse : https://ariion.github.io/mairiedesassy/
+
+Pour un nom de domaine (ex. `www.sassy.fr`), définir `SITE_URL=https://www.sassy.fr` et `SITE_BASE=/` dans le workflow, et ajouter `public/CNAME`.
+
+## Publier du contenu
+
+Tout le contenu éditable se trouve dans `src/content/`. Chaque fichier Markdown commence par un en-tête (frontmatter) :
+
+| Rubrique | Dossier / fichier | Champs |
+|---|---|---|
+| Affichage mairie et comptes rendus | `affichage/*.md` | `date`, `titre`, `info`, `type` (Arrêté · Compte rendu · Avis · Info), `fichier` (PDF facultatif, déposé dans `public/documents/`) |
+| Événements | `evenements/*.md` | `date`, `heure`, `titre`, `lieu`, `organisateur` |
+| Blog | `articles/*.md` | `titre`, `auteur` (Mairie · Association patrimoine · SIVOM · Comité des fêtes), `date`, `extrait`, `image`, `commentaires` |
+| Menu cantine | `menus/AAAA-MM-JJ.md` | `semaine` (date du lundi), `jours` |
+| Revues | `revues/*.md` | `type` (mensuelle · trimestrielle), `numero`, `date`, `titre`, `fichier` (PDF dans `public/revues/`) |
+| Annuaire | `annuaire.yaml` | `nom`, `activite`, `categorie`, `adresse`, `telephone`, `site` |
+| Conseil municipal | `conseil.yaml` | `nom`, `fonction`, `ordre` |
+
+Les coordonnées, les horaires et le nom du maire sont regroupés dans `src/data/site.ts`.
+
+**Commentaires du blog.** Le formulaire ouvre la messagerie de l’internaute et adresse le message à la mairie. Pour publier un commentaire après modération, l’ajouter à la liste `commentaires` de l’article.
+
+## À faire avant la mise en ligne
+
+- [ ] Remplacer les **exemples fictifs** tirés de la maquette : affichage, événements, articles, menu, revues, annuaire. Ils sont signalés par un commentaire `EXEMPLE`.
+- [ ] Compléter `conseil.yaml` avec les adjoints et les conseillers, et **vérifier le nom du maire** après les municipales de mars 2026.
+- [ ] Location de salle : ajouter capacité et tarifs (`src/pages/mairie/location-de-salle.astro`).
+- [ ] Nommer l’école et l’association patrimoine, et préciser leurs contacts.
+- [ ] Remplacer la marque quatre couleurs par le blason vectoriel officiel.
+- [ ] Ajouter des photos (`src/pages/decouvrir/photos.astro`).
+- [ ] Si des personnes non développeuses doivent publier : brancher Decap CMS sur `src/content/`.
+
+## Structure
+
+```
+src/
+  content/          contenus éditables (Markdown / YAML)
+  content.config.ts schémas des collections
+  data/site.ts      coordonnées mairie + arborescence du menu
+  layouts/          Base (barre, nav, pied de page) · Page (pages intérieures)
+  components/       lignes d'affichage, événements, articles, revues
+  pages/            une page par rubrique (5 rubriques, 17 pages)
+  styles/           design system Modernist + couleurs du blason
+docs/design/        maquette et cahier de passation Claude Design
+```

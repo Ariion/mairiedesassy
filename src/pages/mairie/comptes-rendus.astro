@@ -1,0 +1,13 @@
+---
+import Page from '../../layouts/Page.astro';
+import NoticeRow from '../../components/NoticeRow.astro';
+import { affichageRecent } from '../../data/queries';
+
+const crs = (await affichageRecent()).filter((e) => e.data.type === 'Compte rendu');
+---
+<Page section="Mairie" title="Comptes rendus de réunion" lead="Les comptes rendus des séances du conseil municipal, du plus récent au plus ancien.">
+  <div class="col">
+    {crs.length ? crs.map((e) => <NoticeRow entry={e} />) : <p class="empty">Aucun compte rendu publié pour le moment.</p>}
+  </div>
+  <p class="note" style="margin-top:24px">Les séances du conseil municipal sont publiques. Les dates des prochaines séances sont annoncées à l’affichage.</p>
+</Page>

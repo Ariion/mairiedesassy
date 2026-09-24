@@ -1,0 +1,39 @@
+---
+import Page from '../../../layouts/Page.astro';
+import NoticeRow from '../../../components/NoticeRow.astro';
+import { affichageRecent } from '../../../data/queries';
+import { url } from '../../../data/url';
+
+const all = await affichageRecent();
+const types = ['Arrêté', 'Compte rendu', 'Avis', 'Info'] as const;
+const annees = [...new Set(all.map((e) => e.data.date.getFullYear()))];
+---
+<Page section="Mairie" title="Affichage mairie" lead="Arrêtés, comptes rendus, avis et informations : l’affichage municipal, consultable aussi en mairie.">
+  <div class="filters" role="group" aria-label="Filtrer par type">
+    <button class="chip" type="button" data-filter="" aria-current="true">Tout</button>
+    {types.map((t) => <button class="chip" type="button" data-filter={t}>{t}</button>)}
+  </div>
+  {annees.map((a) => (
+    <section class="section" data-year>
+      <div class="sec-head"><h2>{a}</h2></div>
+      {all.filter((e) => e.data.date.getFullYear() === a).map((e) => <div data-type={e.data.type}><NoticeRow entry={e} /></div>)}
+    </section>
+  ))}
+  <p class="note">Les documents officiels font foi dans leur version affichée en mairie. Pour les comptes rendus seuls, voir <a href={url('mairie/comptes-rendus/')}>Comptes rendus de réunion</a>.</p>
+</Page>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  chips.forEach((chip) =>
+    chip.addEventListener('click', () => {
+      const f = chip.dataset.filter;
+      chips.forEach((c) => c.setAttribute('aria-current', String(c === chip)));
+      document.querySelectorAll<HTMLElement>('[data-type]').forEach((row) => {
+        row.hidden = !!f && row.dataset.type !== f;
+      });
+      document.querySelectorAll<HTMLElement>('[data-year]').forEach((s) => {
+        s.hidden = !s.querySelector('[data-type]:not([hidden])');
+      });
+    }),
+  );
+</script>

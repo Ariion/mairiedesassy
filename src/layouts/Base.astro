@@ -1,0 +1,93 @@
+---
+import '@fontsource/archivo/400.css';
+import '@fontsource/archivo/600.css';
+import '@fontsource/archivo/800.css';
+import '../styles/modernist.css';
+import '../styles/sassy.css';
+import { mairie, nav } from '../data/site';
+import { url } from '../data/url';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Rubrique courante (label de nav) pour aria-current. */
+  section?: string;
+}
+const { title, description = 'Site officiel de la commune de Sassy (14170, Calvados) : affichage municipal, agenda, école et cantine, histoire et patrimoine du village.', section } = Astro.props;
+const fullTitle = title ? `${title} · Commune de Sassy` : 'Commune de Sassy · 14170 · Calvados';
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:locale" content="fr_FR" />
+  <meta name="theme-color" content="#1f6b3a" />
+  <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+  <link rel="sitemap" href={url('sitemap-index.xml')} />
+</head>
+<body>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <div class="utility">
+    <div class="wrap">
+      <span>{mairie.horairesCourts}</span>
+      <span class="utility-contact">
+        <a href={mairie.telephoneHref}>{mairie.telephone}</a>
+        <a href={`mailto:${mairie.email}`}>{mairie.email}</a>
+      </span>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Navigation principale">
+    <a class="nav-brand" href={url()} aria-label="Sassy, accueil">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>Sassy
+    </a>
+    <span class="nav-links">
+      {nav.map((s) => (
+        <a href={url(s.href)} aria-current={section === s.label ? 'page' : undefined}>{s.label}</a>
+      ))}
+    </span>
+    <a class="btn btn-primary" href={url('contact/')}>Contacter la mairie</a>
+
+    <details class="nav-menu">
+      <summary class="nav-toggle" aria-label="Ouvrir le menu">☰ Menu</summary>
+      <div class="nav-menu-panel">
+        {nav.map((s) => (
+          <div class="grp">
+            <b>{s.label}</b>
+            {s.items.map((i) => <a href={url(i.href)}>{i.label}</a>)}
+          </div>
+        ))}
+        <a class="btn btn-primary" href={url('contact/')}>Contacter la mairie</a>
+      </div>
+    </details>
+  </nav>
+  <div class="blason-band" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+  <main id="contenu">
+    <slot />
+  </main>
+
+  <footer>
+    <div class="wrap footer">
+      {nav.map((s) => (
+        <div>
+          <b>{s.label === 'École & cantine' ? 'École' : s.label}</b>
+          {s.items.map((i) => <a href={url(i.href)}>{i.label}</a>)}
+          {s.label === 'Contact' && <a href={mairie.interco.url}>Pays de Falaise</a>}
+        </div>
+      ))}
+    </div>
+    <div class="wrap legal">
+      © Commune de Sassy · Maire : {mairie.maire} · <a href={url('mentions-legales/')}>Mentions légales</a>
+    </div>
+  </footer>
+</body>
+</html>

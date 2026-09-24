@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import Page from '../../layouts/Page.astro';
+import { url } from '../../data/url';
+import photoEglise from '../../assets/sassy-eglise.webp';
+
+const reperes = [
+  { y: '1066', t: 'Un seigneur de « Sacy » combat aux côtés de Guillaume le Conquérant à la bataille d’Hastings.' },
+  { y: 'XIIᵉ s.', t: 'Construction de l’église Saint-Gervais-et-Saint-Protais, remaniée par la suite.' },
+  { y: 'Moyen Âge', t: 'Un château fort, le « Châtelet », commande l’entrée du village.' },
+  { y: '1498', t: 'La terre de Sassy passe à la famille de Vauquelin.' },
+  { y: '1535–1607', t: 'Vie de Jean Vauquelin de la Fresnaye, poète et lieutenant général du bailliage de Caen.' },
+  { y: 'v. 1600', t: 'À la place de la forteresse, les Vauquelin font bâtir un manoir, dont subsistent le porche monumental et le colombier.' },
+  { y: '1932', t: 'Le porche et le colombier de la ferme du Châtelet sont protégés au titre des monuments historiques.' },
+];
+---
+<Page section="Découvrir" title="Histoire du village" kicker="Du Châtel aux Vauquelin" lead="Mille ans d’histoire dans un village du Pays de Falaise, entre plaine de Caen et vallée de la Dives.">
+  <div class="layout-aside">
+    <div class="prose">
+      <h2>Aux origines : Sacy</h2>
+      <p>Le nom du village apparaît sous la forme <em>Sacy</em>. En 1066, un seigneur de Sacy participe à la bataille d’Hastings, qui ouvre au duc Guillaume la conquête de l’Angleterre.</p>
+      <p>Au Moyen Âge, un château fort, le « Châtelet », domine l’entrée du village. Son souvenir demeure dans le nom de la <strong>ferme du Châtelet</strong>, bâtie à son emplacement.</p>
+
+      <h2>Le temps des Vauquelin</h2>
+      <p>En 1498, la terre de Sassy passe à la famille de Vauquelin. Dès lors, l’histoire de la commune se confond avec celle de cette célèbre famille normande.</p>
+      <p><strong>Jean Vauquelin de la Fresnaye</strong> (1535–1607), lieutenant général du bailliage de Caen, est l’un des poètes français les plus connus du XVIᵉ siècle, auteur notamment d’un <em>Art poétique</em>. Son fils, <strong>Nicolas Vauquelin des Yveteaux</strong> (mort en 1649), fut lui aussi poète.</p>
+      <p>À la place de l’ancienne forteresse, les Vauquelin font construire, à la fin du XVIᵉ et au début du XVIIᵉ siècle, un manoir dont la partie la plus visible aujourd’hui est le <strong>porche monumental</strong>. Le porche et le colombier sont classés monuments historiques depuis 1932 ; les murs qui prolongent le portail et les pavillons d’entrée sont inscrits la même année.</p>
+
+      <h2>L’église Saint-Gervais-et-Saint-Protais</h2>
+      <figure>
+        <Image src={photoEglise} alt="Église Saint-Gervais-et-Saint-Protais de Sassy" widths={[600, 1200]} sizes="(max-width: 800px) 100vw, 720px" />
+        <figcaption>Église Saint-Gervais-et-Saint-Protais, XIIᵉ siècle</figcaption>
+      </figure>
+      <p>Construite au XIIᵉ siècle puis remaniée, l’église offre un bel exemple de l’art de transition entre roman et gothique. Jean Vauquelin y fit élever une <strong>chapelle seigneuriale</strong>, bâtie au-dessus d’une crypte funéraire. L’église est protégée au titre des monuments historiques.</p>
+
+      <h2>Le blason</h2>
+      <blockquote>Tiercé en pairle renversé : de sinople au colombier d’or, de gueules à deux léopards d’or, d’argent à trois fasces ondées d’azur et au trèfle de sinople.</blockquote>
+      <p>Ses émaux, sinople, gueules, or et azur, sont les couleurs de ce site.</p>
+    </div>
+    <aside>
+      <div class="box">
+        <h2>Repères</h2>
+        <ol class="timeline">
+          {reperes.map((r) => <li><span class="y">{r.y}</span><p>{r.t}</p></li>)}
+        </ol>
+      </div>
+      <div class="box">
+        <h2>Pour aller plus loin</h2>
+        <p><a href={url('decouvrir/patrimoine/')}>L’association patrimoine</a> · <a href={url('decouvrir/photos/')}>Photos</a> · <a href={url('decouvrir/carte/')}>Carte</a></p>
+        <p><a href="https://fr.wikipedia.org/wiki/Sassy">Sassy sur Wikipédia</a><br /><a href="https://pop.culture.gouv.fr/notice/merimee/PA00111727">Ferme du Châtelet (base Mérimée)</a><br /><a href="https://pop.culture.gouv.fr/notice/merimee/PA00111726">Église (base Mérimée)</a></p>
+      </div>
+    </aside>
+  </div>
+</Page>

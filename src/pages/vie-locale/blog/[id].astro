@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Page from '../../../layouts/Page.astro';
+import { dateLongue, url } from '../../../data/url';
+import { mairie } from '../../../data/site';
+
+export async function getStaticPaths() {
+  return (await getCollection('articles')).map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+---
+<Page section="Vie locale" title={d.titre} kicker={`${d.auteur} · ${dateLongue(d.date)}`} lead={d.extrait}>
+  <article class="prose">
+    {d.image && <figure><Image src={d.image} alt="" widths={[600, 1200]} sizes="(max-width: 800px) 100vw, 720px" /></figure>}
+    <Content />
+  </article>
+
+  <section class="comments" aria-labelledby="commentaires">
+    <h2 id="commentaires">{d.commentaires.length} commentaire{d.commentaires.length > 1 ? 's' : ''}</h2>
+    {d.commentaires.map((c) => (
+      <div class="comment"><b>{c.nom}</b><span class="when">{dateLongue(c.date)}</span><p>{c.texte}</p></div>
+    ))}
+
+    <h2 style="margin-top:40px">Laisser un commentaire</h2>
+    <p class="note">Les commentaires sont modérés : ils sont publiés après validation par la mairie. Votre adresse e-mail n’est jamais affichée.</p>
+    <form class="form" data-mailto={mairie.email} data-subject={`Commentaire : ${d.titre}`}>
+      <div class="field"><label for="c-nom">Nom</label><input class="input" id="c-nom" name="nom" required autocomplete="name" /></div>
+      <div class="field"><label for="c-email">E-mail</label><input class="input" id="c-email" name="email" type="email" required autocomplete="email" /></div>
+      <div class="field"><label for="c-msg">Message</label><textarea class="input" id="c-msg" name="message" required></textarea></div>
+      <button class="btn btn-primary" type="submit">Envoyer mon commentaire</button>
+    </form>
+  </section>
+  <p style="margin-top:32px"><a class="btn btn-ghost" href={url('vie-locale/blog/')}>← Tous les articles</a></p>
+</Page>
+
+<script>
+  import '../../../scripts/mailto-form';
+</script>

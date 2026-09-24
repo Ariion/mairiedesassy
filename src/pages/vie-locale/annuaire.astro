@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Page from '../../layouts/Page.astro';
+import { url } from '../../data/url';
+
+const pros = (await getCollection('annuaire')).map((p) => p.data).sort((a, b) => a.nom.localeCompare(b.nom, 'fr'));
+const categories = ['Agriculture', 'Artisanat', 'Hébergement', 'Commerce & services'] as const;
+---
+<Page section="Vie locale" title="Annuaire professionnel" lead="Agriculteurs, artisans, gîtes et commerces installés à Sassy.">
+  {categories.filter((c) => pros.some((p) => p.categorie === c)).map((c) => (
+    <section class="section">
+      <div class="sec-head"><h2>{c}</h2></div>
+      <div class="cards" style="padding-top:24px">
+        {pros.filter((p) => p.categorie === c).map((p) => (
+          <div class="card-line">
+            <span class="role">{p.activite}</span>
+            <h3>{p.nom}</h3>
+            {p.adresse && <p>{p.adresse}</p>}
+            {p.telephone && <p><a href={`tel:${p.telephone.replace(/\s/g, '')}`}>{p.telephone}</a></p>}
+            {p.site && <p><a href={p.site}>Site internet</a></p>}
+          </div>
+        ))}
+      </div>
+    </section>
+  ))}
+  <div class="box box-green" style="max-width:560px">
+    <h2>Vous êtes professionnel à Sassy ?</h2>
+    <p>L’inscription à l’annuaire est gratuite. Envoyez à la mairie votre nom, votre activité et vos coordonnées.</p>
+    <a class="btn btn-primary" href={url('contact/')}>Demander mon inscription</a>
+  </div>
+</Page>

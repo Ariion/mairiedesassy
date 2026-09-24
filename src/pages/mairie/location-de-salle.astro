@@ -1,0 +1,40 @@
+---
+import Page from '../../layouts/Page.astro';
+import { mairie } from '../../data/site';
+import { url } from '../../data/url';
+
+// À COMPLÉTER par la mairie : capacité, équipements et tarifs réels.
+const tarifs: { formule: string; habitants: string; exterieurs: string }[] = [
+  // { formule: 'Journée', habitants: '— €', exterieurs: '— €' },
+  // { formule: 'Week-end', habitants: '— €', exterieurs: '— €' },
+];
+---
+<Page section="Mairie" title="Location de salle" lead="La salle communale peut être louée par les habitants et les associations pour vos repas de famille, fêtes et réunions.">
+  <div class="layout-aside">
+    <div class="prose">
+      <h2>Tarifs</h2>
+      {tarifs.length ? (
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Formule</th><th>Habitants de Sassy</th><th>Extérieurs</th></tr></thead>
+            <tbody>{tarifs.map((t) => <tr><td>{t.formule}</td><td>{t.habitants}</td><td>{t.exterieurs}</td></tr>)}</tbody>
+          </table>
+        </div>
+      ) : <p>Les tarifs, la capacité et les équipements de la salle vous sont communiqués sur simple demande en mairie.</p>}
+      <h2>Comment réserver ?</h2>
+      <ol>
+        <li>Vérifiez la disponibilité de la date auprès du secrétariat de mairie (téléphone ou courriel).</li>
+        <li>Signez le contrat de location et remettez l’attestation d’assurance responsabilité civile.</li>
+        <li>Déposez la caution, puis récupérez les clés et faites l’état des lieux à la date convenue.</li>
+      </ol>
+      <p>La réservation n’est définitive qu’après signature du contrat. Il n’y a pas de réservation en ligne.</p>
+    </div>
+    <aside class="box box-green">
+      <h2>Réserver la salle</h2>
+      <p>Contactez le secrétariat de mairie :</p>
+      <p><a href={mairie.telephoneHref}>{mairie.telephone}</a><br /><a href={`mailto:${mairie.email}?subject=Location de la salle communale`}>{mairie.email}</a></p>
+      <p>Permanences : lundi 11h–12h, jeudi 14h–15h, samedi 8h–12h sur rendez-vous.</p>
+      <a class="btn btn-primary" href={url('contact/')}>Écrire à la mairie</a>
+    </aside>
+  </div>
+</Page>

@@ -1,0 +1,15 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { url } from '../data/url';
+interface Props { entry: CollectionEntry<'articles'> }
+const { entry } = Astro.props;
+const d = entry.data;
+const n = d.commentaires.length;
+const date = d.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+---
+<article class="post">
+  <span class="post-author">{d.auteur}</span>
+  <h3><a href={url(`vie-locale/blog/${entry.id}/`)}>{d.titre}</a></h3>
+  <p>{d.extrait}</p>
+  <span class="post-meta">{date} · {n} commentaire{n > 1 ? 's' : ''}</span>
+</article>

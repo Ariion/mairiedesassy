@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { dateCourte, url } from '../data/url';
+interface Props { entry: CollectionEntry<'affichage'> }
+const { entry } = Astro.props;
+const d = entry.data;
+---
+<a class="notice" href={url(`mairie/affichage/${entry.id}/`)}>
+  <span class="notice-date"><time datetime={d.date.toISOString().slice(0, 10)}>{dateCourte(d.date)}</time></span>
+  <span class="notice-body"><span class="notice-title">{d.titre}</span><span class="notice-info">{d.info}</span></span>
+  <span class="tag tag-accent">{d.type}</span>
+</a>

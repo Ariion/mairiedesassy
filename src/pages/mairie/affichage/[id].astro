@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from 'astro:content';
+import Page from '../../../layouts/Page.astro';
+import { dateLongue, url } from '../../../data/url';
+
+export async function getStaticPaths() {
+  return (await getCollection('affichage')).map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+---
+<Page section="Mairie" title={d.titre} kicker={`${d.type} · ${dateLongue(d.date)}`} lead={d.info}>
+  <div class="layout-aside">
+    <div class="prose">
+      <Content />
+      {d.fichier && <p><a class="btn btn-primary" href={url(d.fichier)} download>Télécharger le document (PDF)</a></p>}
+    </div>
+    <aside class="box">
+      <p>Ce document est également consultable en mairie aux heures d’ouverture.</p>
+      <a class="btn btn-ghost" href={url('mairie/affichage/')}>← Tout l’affichage</a>
+    </aside>
+  </div>
+</Page>

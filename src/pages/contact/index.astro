@@ -1,0 +1,36 @@
+---
+import Page from '../../layouts/Page.astro';
+import { mairie } from '../../data/site';
+---
+<Page section="Contact" title="Nous écrire" lead="Une question, une démarche, une idée pour le village ? La mairie vous répond.">
+  <div class="layout-aside">
+    <div>
+      <form class="form" data-mailto={mairie.email}>
+        <div class="field"><label for="f-nom">Nom et prénom</label><input class="input" id="f-nom" name="nom" required autocomplete="name" /></div>
+        <div class="field"><label for="f-email">E-mail</label><input class="input" id="f-email" name="email" type="email" required autocomplete="email" /></div>
+        <div class="field"><label for="f-tel">Téléphone (facultatif)</label><input class="input" id="f-tel" name="telephone" type="tel" autocomplete="tel" /></div>
+        <div class="field"><label for="f-sujet">Objet</label><input class="input" id="f-sujet" name="sujet" required /></div>
+        <div class="field"><label for="f-msg">Message</label><textarea class="input" id="f-msg" name="message" rows="6" required></textarea></div>
+        <button class="btn btn-primary" type="submit">Préparer mon message</button>
+      </form>
+      <p class="note" style="margin-top:16px">Le bouton ouvre votre messagerie avec un message prérempli adressé à <a href={`mailto:${mairie.email}`}>{mairie.email}</a>. Aucune donnée n’est enregistrée par le site.</p>
+    </div>
+    <aside>
+      <div class="box box-green">
+        <h2>Mairie de Sassy</h2>
+        <p>{mairie.adresse[0]}<br />{mairie.adresse[1]}</p>
+        <p>Tél. et fax : <a href={mairie.telephoneHref}>{mairie.telephone}</a><br /><a href={`mailto:${mairie.email}`}>{mairie.email}</a></p>
+      </div>
+      <div class="box">
+        <h2>Horaires</h2>
+        <dl class="dl">
+          {mairie.horaires.map((h) => (<><dt>{h.jour}</dt><dd>{h.heures}{h.note && <span style="font-weight:400"> ({h.note})</span>}</dd></>))}
+        </dl>
+      </div>
+    </aside>
+  </div>
+</Page>
+
+<script>
+  import '../../scripts/mailto-form';
+</script>

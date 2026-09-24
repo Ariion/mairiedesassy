@@ -1,0 +1,34 @@
+---
+import Page from '../../layouts/Page.astro';
+import { mairie } from '../../data/site';
+
+const { lat, lon } = mairie.coords;
+const bbox = [lon - 0.035, lat - 0.018, lon + 0.035, lat + 0.018].map((n) => n.toFixed(4)).join(',');
+const embed = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lon}`;
+const osm = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=14/${lat}/${lon}`;
+const itineraire = `https://www.openstreetmap.org/directions?to=${lat},${lon}`;
+---
+<Page section="Découvrir" title="Carte de la ville" lead="Sassy se situe dans le Calvados, au nord-est de Falaise, entre la plaine de Caen et la vallée de la Dives.">
+  <div class="layout-aside">
+    <div>
+      <iframe class="map" title="Carte de Sassy (OpenStreetMap)" src={embed} loading="lazy"></iframe>
+      <p style="font-size:13px;margin-top:8px"><a href={osm}>Agrandir la carte</a> · <a href={itineraire}>Calculer un itinéraire</a> · © contributeurs OpenStreetMap</p>
+    </div>
+    <aside>
+      <div class="box">
+        <h2>Repères</h2>
+        <dl class="dl">
+          <dt>Mairie</dt><dd>{mairie.adresse.join(', ')}</dd>
+          <dt>Superficie</dt><dd>{mairie.superficie}</dd>
+          <dt>Altitude</dt><dd>{mairie.altitude}</dd>
+          <dt>Code postal</dt><dd>{mairie.codePostal}</dd>
+          <dt>Code INSEE</dt><dd>{mairie.insee}</dd>
+        </dl>
+      </div>
+      <div class="box">
+        <h2>Communes voisines</h2>
+        <p>Ernes, Perrières, Olendon ; Vendeuvre à l’est, Saint-Pierre-en-Auge au nord-est, Falaise au sud.</p>
+      </div>
+    </aside>
+  </div>
+</Page>

@@ -1,0 +1,30 @@
+---
+import Page from '../../../layouts/Page.astro';
+import PostCard from '../../../components/PostCard.astro';
+import { articlesRecents } from '../../../data/queries';
+
+const posts = await articlesRecents();
+const auteurs = [...new Set(posts.map((p) => p.data.auteur))];
+---
+<Page section="Vie locale" title="Le blog du village" lead="Les nouvelles de Sassy, racontées par la mairie et les associations du village.">
+  <div class="filters" role="group" aria-label="Filtrer par auteur">
+    <button class="chip" type="button" data-filter="" aria-current="true">Tous</button>
+    {auteurs.map((a) => <button class="chip" type="button" data-filter={a}>{a}</button>)}
+  </div>
+  <div class="posts">
+    {posts.map((p) => <div data-author={p.data.auteur}><PostCard entry={p} /></div>)}
+  </div>
+</Page>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  chips.forEach((chip) =>
+    chip.addEventListener('click', () => {
+      const f = chip.dataset.filter;
+      chips.forEach((c) => c.setAttribute('aria-current', String(c === chip)));
+      document.querySelectorAll<HTMLElement>('[data-author]').forEach((el) => {
+        el.hidden = !!f && el.dataset.author !== f;
+      });
+    }),
+  );
+</script>

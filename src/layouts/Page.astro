@@ -1,0 +1,40 @@
+---
+import Base from './Base.astro';
+import { nav } from '../data/site';
+import { url } from '../data/url';
+
+interface Props {
+  title: string;
+  lead?: string;
+  description?: string;
+  /** Label de la rubrique (doit correspondre à data/site.ts). */
+  section: string;
+  kicker?: string;
+}
+const { title, lead, description, section, kicker } = Astro.props;
+const rubrique = nav.find((s) => s.label === section);
+const here = Astro.url.pathname;
+---
+<Base title={title} description={description ?? lead} section={section}>
+  <div class="wrap">
+    <header class="page-head">
+      <nav class="crumbs" aria-label="Fil d’Ariane">
+        <a href={url()}>Accueil</a><span aria-hidden="true">/</span><span>{section}</span>
+      </nav>
+      {kicker && <span class="kicker">{kicker}</span>}
+      <h1>{title}</h1>
+      {lead && <p class="lead">{lead}</p>}
+    </header>
+    {rubrique && rubrique.items.length > 1 && (
+      <nav class="subnav" aria-label={`Rubrique ${section}`}>
+        {rubrique.items.map((i) => {
+          const href = url(i.href);
+          return <a href={href} aria-current={here === href || (here.startsWith(href) && i.href !== rubrique.items[0].href) ? 'page' : undefined}>{i.label}</a>;
+        })}
+      </nav>
+    )}
+    <div class="page-body">
+      <slot />
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import Page from '../../layouts/Page.astro';
+import { url } from '../../data/url';
+import photoMairie from '../../assets/sassy-mairie.webp';
+import photoEglise from '../../assets/sassy-eglise.webp';
+
+// Pour ajouter une photo : déposer le fichier dans src/assets/ et l'ajouter à cette liste.
+const photos = [
+  { src: photoMairie, legende: 'La mairie et le monument aux morts' },
+  { src: photoEglise, legende: 'Église Saint-Gervais-et-Saint-Protais, XIIᵉ siècle' },
+];
+---
+<Page section="Découvrir" title="Photos" lead="Le village en images : bâtiments, paysages et moments de la vie locale.">
+  <div class="gallery">
+    {photos.map((p) => (
+      <figure>
+        <a href={p.src.src}><Image src={p.src} alt={p.legende} widths={[600, 900]} sizes="(max-width: 760px) 100vw, 540px" /></a>
+        <figcaption>{p.legende}</figcaption>
+      </figure>
+    ))}
+  </div>
+  <p class="note" style="margin-top:32px">Vous avez de belles photos de Sassy, anciennes ou récentes ? <a href={url('contact/')}>Proposez-les à la mairie</a> pour enrichir cette galerie (en précisant l’auteur).</p>
+</Page>

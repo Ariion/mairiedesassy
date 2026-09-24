@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import { mairie } from '../data/site';
+---
+<Base title="Mentions légales">
+  <div class="wrap">
+    <header class="page-head"><h1>Mentions légales</h1></header>
+    <div class="page-body prose">
+      <h2>Éditeur</h2>
+      <p>{mairie.nom}, {mairie.adresse.join(', ')}.<br />Tél. : {mairie.telephone} · {mairie.email}</p>
+      <p>Directeur de la publication : {mairie.maire}, maire de Sassy.</p>
+      <h2>Hébergement</h2>
+      <p>GitHub Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+      <h2>Données personnelles</h2>
+      <p>Ce site ne dépose aucun cookie et ne comporte aucun outil de mesure d’audience. Les polices de caractères sont hébergées sur le site lui-même. Les formulaires ouvrent simplement votre messagerie : aucune donnée n’est collectée ni conservée par le site. Les messages reçus par la mairie ne sont utilisés que pour vous répondre.</p>
+      <p>La page « Carte » affiche une carte OpenStreetMap, chargée depuis les serveurs de la fondation OpenStreetMap.</p>
+      <p>Conformément au RGPD, vous pouvez exercer vos droits d’accès, de rectification et d’effacement en écrivant à la mairie.</p>
+      <h2>Crédits</h2>
+      <p>Photographies : Commune de Sassy. Carte : © contributeurs OpenStreetMap. Police : Archivo (SIL Open Font License).</p>
+    </div>
+  </div>
+</Base>

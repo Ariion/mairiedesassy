@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="_ds/modernist-a973b848-b101-4a6f-8df2-1ddc59ae139b/styles.css"><script src="_ds/modernist-a973b848-b101-4a6f-8df2-1ddc59ae139b/_ds_bundle.js"></script><style>:root{--color-accent:#1f6b3a;--color-accent-100:#eef6f0;--color-accent-200:#d4eadb;--color-accent-300:#b3d8bf;--color-accent-600:#185c30;--color-accent-700:#134a27;--color-accent-800:#0e3a1e;--sassy-gueules:#c8102e;--sassy-or:#d9a61c;--sassy-azur:#1f4e9c}body{margin:0;background:var(--color-bg);text-wrap:pretty}a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-600)}</style></helmet>
+
+<div style="font-size:13px;background:var(--color-text);color:var(--color-bg)">
+<div style="max-width:1200px;margin:0 auto;padding:8px clamp(20px,5vw,56px);display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between">
+<span>Mairie ouverte lundi 11h–12h · jeudi 14h–15h · samedi 8h–12h sur rendez-vous</span>
+<span style="display:flex;gap:20px"><span>02 31 90 06 26</span><span>mairiedesassy@wanadoo.fr</span></span>
+</div></div>
+
+<nav class="nav" style="padding-inline:max(clamp(20px,5vw,56px),calc((100% - 1200px) / 2 + clamp(20px,5vw,56px)));flex-wrap:wrap;background:var(--color-bg)">
+<span class="nav-brand" style="display:flex;align-items:center;gap:10px;font-size:22px"><span style="display:grid;grid-template-columns:7px 7px;grid-template-rows:7px 7px"><span style="background:var(--color-accent)"></span><span style="background:var(--sassy-gueules)"></span><span style="background:var(--sassy-azur)"></span><span style="background:var(--sassy-or)"></span></span>Sassy</span>
+<a href="#affichage" aria-current="page">Mairie</a><a href="#affichage">École &amp; cantine</a><a href="#agenda">Vie locale</a><a href="#decouvrir">Découvrir</a><a href="#contact">Contact</a>
+<a class="btn btn-primary" href="#contact" style="color:var(--color-bg)">Contacter la mairie</a>
+</nav>
+<div style="display:grid;grid-template-columns:3fr 2fr 1fr 2fr;height:6px"><span style="background:var(--color-accent)"></span><span style="background:var(--sassy-gueules)"></span><span style="background:var(--sassy-or)"></span><span style="background:var(--sassy-azur)"></span></div>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,56px)">
+
+<section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px;padding:56px 0;align-items:end">
+<div style="display:flex;flex-direction:column;gap:24px">
+<span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-700)">Commune de Sassy · 14170 · Calvados</span>
+<h1 style="font-size:clamp(44px,6.4vw,84px);line-height:1.02;letter-spacing:-.025em;margin:0">Bienvenue<br>à Sassy.</h1>
+<p style="font-size:18px;line-height:1.6;max-width:46ch;margin:0;color:color-mix(in srgb,var(--color-text) 80%,transparent)">Un village du Pays de Falaise, entre plaine et vallée de la Dives. Retrouvez ici l’affichage municipal, l’agenda, la vie de l’école et l’histoire du village.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="#affichage" style="color:var(--color-bg)">Voir l’affichage mairie →</a><a class="btn btn-secondary" href="#agenda" style="color:var(--color-text)">Agenda du village</a></div>
+</div>
+<figure style="margin:0;border:2px solid var(--color-text)"><sc-if value="{{ heroMairie }}" hint-placeholder-val="{{ true }}"><img src="assets/sassy-mairie.webp" alt="La mairie de Sassy" style="width:100%;aspect-ratio:4 / 3;object-fit:cover"></sc-if><sc-if value="{{ heroEglise }}" hint-placeholder-val="{{ false }}"><img src="assets/sassy-eglise.webp" alt="L’église de Sassy" style="width:100%;aspect-ratio:4 / 3;object-fit:cover"></sc-if></figure>
+</section>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));border-top:2px solid var(--color-text);border-bottom:2px solid var(--color-text)">
+<div style="padding:20px 20px 20px 0;display:flex;flex-direction:column;gap:4px"><span style="font:800 40px/1 var(--font-heading);color:var(--color-accent)">217</span><span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 70%,transparent)">Habitants (2023)</span></div>
+<div style="padding:20px;border-left:2px solid var(--color-divider);display:flex;flex-direction:column;gap:4px"><span style="font:800 40px/1 var(--font-heading);color:var(--color-accent);white-space:nowrap">9,56 km²</span><span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 70%,transparent)">Superficie</span></div>
+<div style="padding:20px;border-left:2px solid var(--color-divider);display:flex;flex-direction:column;gap:4px"><span style="font:800 40px/1 var(--font-heading);color:var(--color-accent)">XIIᵉ</span><span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 70%,transparent)">Église St-Gervais-St-Protais</span></div>
+<div style="padding:20px;border-left:2px solid var(--color-divider);display:flex;flex-direction:column;gap:4px"><span style="font:800 40px/1 var(--font-heading);color:var(--color-accent)">1066</span><span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 70%,transparent)">Un seigneur de « Sacy » à Hastings</span></div>
+</div>
+
+<section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:0 56px;padding:56px 0">
+<div id="affichage" style="display:flex;flex-direction:column">
+<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--color-text);padding-bottom:12px"><h2 style="margin:0;font-size:28px">Affichage mairie</h2><a class="btn btn-ghost" href="#">Tout voir →</a></div>
+<sc-for list="{{ affichage }}" as="d" hint-placeholder-count="4">
+<a href="#" style="display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--color-divider);text-decoration:none;color:var(--color-text)" style-hover="background:color-mix(in srgb,var(--color-text) 4%,transparent)">
+<span style="font:800 15px var(--font-heading);font-feature-settings:'tnum' 1">{{ d.date }}</span>
+<span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:16px;font-weight:600">{{ d.titre }}</span><span style="font-size:13px;color:color-mix(in srgb,var(--color-text) 70%,transparent)">{{ d.info }}</span></span>
+<span class="tag tag-accent">{{ d.type }}</span>
+</a>
+</sc-for>
+</div>
+<div id="agenda" style="display:flex;flex-direction:column">
+<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--color-text);padding-bottom:12px"><h2 style="margin:0;font-size:28px">Événements</h2><a class="btn btn-ghost" href="#">Agenda complet →</a></div>
+<sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+<div style="display:grid;grid-template-columns:88px minmax(0,1fr);gap:20px;padding:16px 0;border-bottom:1px solid var(--color-divider);align-items:start">
+<div style="display:flex;flex-direction:column;border:2px solid var(--color-text)"><span style="font:800 32px/1 var(--font-heading);padding:8px 10px 4px">{{ e.jour }}</span><span style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;background:var(--sassy-gueules);color:#fff">{{ e.mois }}</span></div>
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font:800 19px/1.25 var(--font-heading)">{{ e.titre }}</span><span style="font-size:14px;color:color-mix(in srgb,var(--color-text) 72%,transparent)">{{ e.lieu }}</span><span style="font-size:13px;color:var(--color-accent-700)">{{ e.org }}</span></div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="padding:0 0 56px">
+<div style="border-bottom:2px solid var(--color-text);padding-bottom:12px"><h2 style="margin:0;font-size:28px">Au quotidien</h2></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))">
+<sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+<a href="#" style="display:flex;flex-direction:column;gap:10px;padding:24px 24px 28px 0;border-bottom:2px solid var(--color-divider);text-decoration:none;color:var(--color-text)" style-hover="color:var(--color-accent-700)">
+<span style="font:800 14px var(--font-heading);font-feature-settings:'tnum' 1;display:flex;align-items:center;gap:8px"><span style="width:10px;height:10px;background:var(--color-accent);display:block"></span>{{ s.n }}</span>
+<span style="font:800 21px/1.2 var(--font-heading)">{{ s.titre }}</span>
+<span style="font-size:14px;line-height:1.5;color:color-mix(in srgb,var(--color-text) 75%,transparent)">{{ s.txt }}</span>
+</a>
+</sc-for>
+</div>
+</section>
+
+<sc-if value="{{ showBlog }}" hint-placeholder-val="{{ true }}">
+<section style="padding:0 0 56px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--color-text);padding-bottom:12px"><h2 style="margin:0;font-size:28px">Le blog du village</h2><a class="btn btn-ghost" href="#">Tous les articles →</a></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:32px;padding-top:24px">
+<sc-for list="{{ posts }}" as="p" hint-placeholder-count="3">
+<article style="display:flex;flex-direction:column;gap:10px">
+<span style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-700)">{{ p.auteur }}</span>
+<h3 style="margin:0;font-size:21px;line-height:1.25">{{ p.titre }}</h3>
+<p style="margin:0;font-size:15px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 78%,transparent)">{{ p.extrait }}</p>
+<span style="font-size:13px;color:color-mix(in srgb,var(--color-text) 65%,transparent)">{{ p.meta }}</span>
+</article>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+<section id="decouvrir" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:40px 56px;padding:56px 0;border-top:2px solid var(--color-text);align-items:center">
+<figure style="margin:0"><img src="assets/sassy-eglise.webp" alt="Église Saint-Gervais-et-Saint-Protais de Sassy" style="width:100%;aspect-ratio:3 / 2;object-fit:cover"><figcaption>Église Saint-Gervais-et-Saint-Protais, XIIᵉ siècle</figcaption></figure>
+<div style="display:flex;flex-direction:column;gap:20px">
+<span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--color-accent-700)">Découvrir Sassy</span>
+<h2 style="margin:0;font-size:clamp(28px,3.2vw,40px)">Du Châtel aux Vauquelin, mille ans d’histoire</h2>
+<p style="margin:0;font-size:16px;line-height:1.65;color:color-mix(in srgb,var(--color-text) 80%,transparent)">Un château fort, le « Châtelet », dominait l’entrée du village. En 1498, la terre passe à la famille de Vauquelin, dont le poète Jean Vauquelin de la Fresnaye (1535–1607). Son manoir a laissé un porche monumental, inscrit aux monuments historiques.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-secondary" href="#" style="color:var(--color-text)">L’histoire du village →</a><a class="btn btn-ghost" href="#">Photos</a><a class="btn btn-ghost" href="#">Carte</a></div>
+</div>
+</section>
+
+</div>
+
+<section id="contact" style="background:var(--color-accent);color:var(--color-bg)">
+<div style="max-width:1200px;margin:0 auto;padding:64px clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:40px">
+<h2 style="margin:0;font-size:clamp(34px,4.2vw,56px);line-height:1.05">Une question ?<br>La mairie vous répond.</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;font-size:17px;line-height:1.5;font-weight:600">
+<div style="display:flex;flex-direction:column;gap:6px;border-top:2px solid var(--color-bg);padding-top:12px"><span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:400">Adresse</span>2, rue de la Forge<br>14170 Sassy</div>
+<div style="display:flex;flex-direction:column;gap:6px;border-top:2px solid var(--color-bg);padding-top:12px"><span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:400">Horaires</span>Lundi 11h–12h<br>Jeudi 14h–15h<br>Samedi 8h–12h (RDV)</div>
+<div style="display:flex;flex-direction:column;gap:6px;border-top:2px solid var(--color-bg);padding-top:12px"><span style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:400">Joindre</span>02 31 90 06 26<br>mairiedesassy<br>@wanadoo.fr</div>
+</div>
+</div>
+</section>
+
+<footer style="max-width:1200px;margin:0 auto;padding:40px clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:24px;font-size:14px;line-height:1.9">
+<div style="display:flex;flex-direction:column"><b>Mairie</b><a href="#" style="color:var(--color-text)">Infos mairie</a><a href="#" style="color:var(--color-text)">Affichage &amp; comptes rendus</a><a href="#" style="color:var(--color-text)">Le conseil municipal</a><a href="#" style="color:var(--color-text)">Location de salle</a></div>
+<div style="display:flex;flex-direction:column"><b>École</b><a href="#" style="color:var(--color-text)">Menu cantine</a><a href="#" style="color:var(--color-text)">SIVOM</a></div>
+<div style="display:flex;flex-direction:column"><b>Vie locale</b><a href="#" style="color:var(--color-text)">Événements</a><a href="#" style="color:var(--color-text)">Blog</a><a href="#" style="color:var(--color-text)">Revues mensuelle &amp; trimestrielle</a><a href="#" style="color:var(--color-text)">Annuaire professionnel</a></div>
+<div style="display:flex;flex-direction:column"><b>Découvrir</b><a href="#" style="color:var(--color-text)">Histoire</a><a href="#" style="color:var(--color-text)">Association patrimoine</a><a href="#" style="color:var(--color-text)">Photos</a><a href="#" style="color:var(--color-text)">Carte</a></div>
+<div style="display:flex;flex-direction:column"><b>Contact</b><a href="#" style="color:var(--color-text)">Nous écrire</a><a href="#" style="color:var(--color-text)">Informations utiles</a><a href="https://www.paysdefalaise.fr/commune/sassy/" style="color:var(--color-text)">Pays de Falaise</a></div>
+</footer>
+<div style="max-width:1200px;margin:0 auto;padding:16px clamp(20px,5vw,56px) 32px;border-top:2px solid var(--color-divider);font-size:13px;color:color-mix(in srgb,var(--color-text) 70%,transparent)">© Commune de Sassy · Maire : M. Dominique Varin · Mentions légales</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;photoAccueil&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Mairie&quot;,&quot;Église&quot;],&quot;default&quot;:&quot;Mairie&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;afficherBlog&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      heroEglise: this.props.photoAccueil === 'Église',
+      heroMairie: this.props.photoAccueil !== 'Église',
+      showBlog: this.props.afficherBlog ?? true,
+      affichage: [
+        { date: '12/09', titre: 'Arrêté : travaux rue de la Forge', info: 'Circulation alternée du 22 au 26 septembre', type: 'Arrêté' },
+        { date: '08/09', titre: 'Compte rendu du conseil du 5 septembre', info: 'PDF · 3 pages', type: 'Compte rendu' },
+        { date: '01/09', titre: 'Enquête publique — PLUi du Pays de Falaise', info: 'Registre en mairie aux heures d’ouverture', type: 'Avis' },
+        { date: '28/08', titre: 'Inscriptions sur les listes électorales', info: 'Pièces à fournir', type: 'Info' }
+      ],
+      events: [
+        { jour: '12', mois: 'Oct.', titre: 'Repas des aînés', lieu: 'Salle communale · 12h', org: 'Mairie' },
+        { jour: '02', mois: 'Nov.', titre: 'Balade patrimoine : du Châtel à l’église', lieu: 'Départ place de la mairie · 14h', org: 'Association patrimoine' },
+        { jour: '11', mois: 'Nov.', titre: 'Cérémonie du 11 Novembre', lieu: 'Monument aux morts · 11h', org: 'Mairie' }
+      ],
+      services: [
+        { n: '01', titre: 'Menu de la cantine', txt: 'Les repas de la semaine pour les élèves du SIVOM.' },
+        { n: '02', titre: 'Location de salle', txt: 'Tarifs, capacité et contact pour réserver la salle communale.' },
+        { n: '03', titre: 'Revues du village', txt: 'La revue mensuelle et la revue trimestrielle en PDF.' },
+        { n: '04', titre: 'Annuaire des pros', txt: 'Artisans, agriculteurs, gîtes et commerces de Sassy.' }
+      ],
+      posts: [
+        { auteur: 'Association patrimoine', titre: 'Le porche Vauquelin, pierre par pierre', extrait: 'Retour sur la journée de relevés menée cet été avec les bénévoles.', meta: '15 sept. · 4 commentaires' },
+        { auteur: 'Mairie', titre: 'Rentrée : ce qui change pour la cantine', extrait: 'Nouveaux horaires de garderie et inscription aux repas en ligne.', meta: '2 sept. · 2 commentaires' },
+        { auteur: 'SIVOM', titre: 'La kermesse de fin d’année en images', extrait: 'Merci aux familles et aux bénévoles pour cette belle journée.', meta: '30 juin · 7 commentaires' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
