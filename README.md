@@ -7,17 +7,17 @@ Il s’agit d’un site statique, sans base de données ni cookie. La police Arc
 
 ```bash
 npm install
-npm run dev      # http://localhost:4321/mairiedesassy/
+npm run dev      # http://localhost:4321/
 npm run build    # vérification TypeScript + génération dans dist/
 ```
 
-## Mise en ligne (GitHub Pages)
+## Mise en ligne (Vercel)
 
-Le workflow `.github/workflows/deploy.yml` publie le site à chaque push sur `main`, avec en plus une reconstruction chaque matin pour garder l’agenda à jour.
-Une seule activation est nécessaire : **Settings → Pages → Source : GitHub Actions**.
-Adresse : https://ariion.github.io/mairiedesassy/
+Le site est publié sur **https://mairiedesassy.vercel.app/**. Vercel reconstruit le site à chaque push : la branche de production est publiée, les autres branches reçoivent une URL de prévisualisation.
 
-Pour un nom de domaine (ex. `www.sassy.fr`), définir `SITE_URL=https://www.sassy.fr` et `SITE_BASE=/` dans le workflow, et ajouter `public/CNAME`.
+- Réglages de build : voir `vercel.json` (Astro, `npm run build`, dossier `dist`).
+- Nom de domaine (ex. `www.sassy.fr`) : l’ajouter dans Vercel → Settings → Domains, puis définir la variable d’environnement `SITE_URL=https://www.sassy.fr`.
+- Agenda : la liste « À venir » est calculée au moment du build. Pour la tenir à jour sans publier, créer un *Deploy Hook* dans Vercel et l’appeler une fois par jour (cron).
 
 ## Publier du contenu
 
