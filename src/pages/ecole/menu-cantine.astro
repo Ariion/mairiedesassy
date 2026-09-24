@@ -24,10 +24,10 @@ const fin = (d: Date) => new Date(+d + 4 * 864e5);
   <p class="note">Menus susceptibles de modifications selon les approvisionnements. Pour toute allergie ou régime particulier, contactez le SIVOM.</p>
   {anciens.length > 0 && (
     <section class="section">
-      <div class="sec-head"><h2>Semaines précédentes</h2></div>
+      <div class="list-card"><h2>Semaines précédentes</h2>
       <ul class="archive">
         {anciens.map((m) => <li><span class="notice-date">{m.data.semaine.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' })}</span><span>{m.data.jours.map((j) => j.plat).join(' · ')}</span><span></span></li>)}
-      </ul>
+      </ul></div>
     </section>
   )}
 </Page>

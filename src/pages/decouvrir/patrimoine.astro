@@ -3,21 +3,23 @@ import Page from '../../layouts/Page.astro';
 import PostCard from '../../components/PostCard.astro';
 import { articlesRecents } from '../../data/queries';
 import { url } from '../../data/url';
+import Icon from '../../components/Icon.astro';
 
 const posts = (await articlesRecents()).filter((p) => p.data.auteur === 'Association patrimoine').slice(0, 3);
 const monuments = [
-  { nom: 'Église Saint-Gervais-et-Saint-Protais', txt: 'XIIᵉ siècle, transition romane-gothique, chapelle seigneuriale des Vauquelin.', mh: 'Monument historique' },
-  { nom: 'Porche et colombier du Châtelet', txt: 'Vestiges du manoir des Vauquelin, fin XVIᵉ – début XVIIᵉ siècle.', mh: 'Classés en 1932' },
-  { nom: 'Monument aux morts', txt: 'Devant la mairie, lieu des cérémonies du 8 Mai et du 11 Novembre.', mh: 'Mémoire' },
+  { nom: 'Église Saint-Gervais-et-Saint-Protais', txt: 'XIIᵉ siècle, transition romane-gothique, chapelle seigneuriale des Vauquelin.', mh: 'Monument historique', icon: 'landmark' },
+  { nom: 'Porche et colombier du Châtelet', txt: 'Vestiges du manoir des Vauquelin, fin XVIᵉ – début XVIIᵉ siècle.', mh: 'Classés en 1932', icon: 'key' },
+  { nom: 'Monument aux morts', txt: 'Devant la mairie, lieu des cérémonies du 8 Mai et du 11 Novembre.', mh: 'Mémoire', icon: 'pin' },
 ];
 ---
 <Page section="Découvrir" title="Association patrimoine" lead="Des bénévoles qui font connaître, entretiennent et racontent le patrimoine de Sassy : balades commentées, relevés, recherches historiques.">
   <section class="section">
     <div class="sec-head"><h2>Le patrimoine du village</h2><a class="btn btn-ghost" href={url('decouvrir/histoire/')}>L’histoire →</a></div>
     <div class="tiles">
-      {monuments.map((m, i) => (
-        <div class="tile" style="cursor:default">
-          <span class="tile-n">{String(i + 1).padStart(2, '0')} · {m.mh}</span>
+      {monuments.map((m) => (
+        <div class="tile">
+          <span class="tile-ico"><Icon name={m.icon} size={22} /></span>
+          <span class="tile-n">{m.mh}</span>
           <span class="tile-t">{m.nom}</span>
           <span class="tile-x">{m.txt}</span>
         </div>

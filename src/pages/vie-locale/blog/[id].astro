@@ -21,10 +21,10 @@ const { Content } = await render(entry);
   <section class="comments" aria-labelledby="commentaires">
     <h2 id="commentaires">{d.commentaires.length} commentaire{d.commentaires.length > 1 ? 's' : ''}</h2>
     {d.commentaires.map((c) => (
-      <div class="comment"><b>{c.nom}</b><span class="when">{dateLongue(c.date)}</span><p>{c.texte}</p></div>
+      <div class="comment"><span class="avatar" aria-hidden="true">{c.nom[0]}</span><div><b>{c.nom}</b><span class="when">{dateLongue(c.date)}</span><p>{c.texte}</p></div></div>
     ))}
 
-    <h2 style="margin-top:40px">Laisser un commentaire</h2>
+    <h2 style="margin-top:48px">Laisser un commentaire</h2>
     <p class="note">Les commentaires sont modérés : ils sont publiés après validation par la mairie. Votre adresse e-mail n’est jamais affichée.</p>
     <form class="form" data-mailto={mairie.email} data-subject={`Commentaire : ${d.titre}`}>
       <div class="field"><label for="c-nom">Nom</label><input class="input" id="c-nom" name="nom" required autocomplete="name" /></div>

@@ -3,15 +3,19 @@ import { getCollection } from 'astro:content';
 import Page from '../../layouts/Page.astro';
 
 const membres = (await getCollection('conseil')).map((m) => m.data).sort((a, b) => a.ordre - b.ordre);
+const initiales = (n: string) => n.split(/[\s-]+/).map((w) => w[0]).slice(0, 2).join('');
 const renseignes = membres.filter((m) => !m.nom.startsWith('À compléter'));
 ---
 <Page section="Mairie" title="Le conseil municipal" lead="Le conseil municipal de Sassy compte 11 élus, installés après les élections municipales de mars 2026.">
   <div class="cards">
     {renseignes.map((m) => (
-      <div class="card-line"><span class="role">{m.fonction}</span><h3>{m.nom}</h3></div>
+      <div class={`card-line${m.fonction === 'Maire' ? ' featured' : ''}`}>
+        <span class="avatar" aria-hidden="true">{initiales(m.nom)}</span>
+        <span class="role">{m.fonction}</span><h3>{m.nom}</h3>
+      </div>
     ))}
   </div>
-  <div class="prose" style="margin-top:40px">
+  <div class="prose" style="margin-top:56px">
     <h2>Le rôle du conseil</h2>
     <p>Le conseil municipal règle par ses délibérations les affaires de la commune : budget, travaux, entretien de la voirie et des bâtiments communaux, écoles, vie associative. Il se réunit au moins une fois par trimestre ; ses séances sont publiques.</p>
     {renseignes.length < 11 && <p>La composition complète du conseil est affichée en mairie.</p>}

@@ -9,15 +9,15 @@ const annees = [...new Set(revues.map((r) => r.data.date.getFullYear()))];
 ---
 {revues.length === 0 && <p class="empty">Aucun numéro en ligne pour le moment.</p>}
 {annees.map((a) => (
-  <section class="section">
-    <div class="sec-head"><h2>{a}</h2></div>
+  <section class="list-card">
+    <h2>{a}</h2>
     <ul class="archive">
       {revues.filter((r) => r.data.date.getFullYear() === a).map((r) => (
         <li>
           <span class="notice-date">N° {r.data.numero}</span>
           <span class="notice-title">{r.data.titre}</span>
           {r.data.fichier
-            ? <a class="btn btn-secondary" href={url(r.data.fichier)} download>PDF ↓</a>
+            ? <a class="btn btn-secondary" href={url(r.data.fichier)} download>Télécharger le PDF</a>
             : <span class="tag tag-neutral">Disponible en mairie</span>}
         </li>
       ))}

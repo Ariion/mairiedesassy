@@ -14,9 +14,9 @@ const annees = [...new Set(all.map((e) => e.data.date.getFullYear()))];
     {types.map((t) => <button class="chip" type="button" data-filter={t}>{t}</button>)}
   </div>
   {annees.map((a) => (
-    <section class="section" data-year>
-      <div class="sec-head"><h2>{a}</h2></div>
-      {all.filter((e) => e.data.date.getFullYear() === a).map((e) => <div data-type={e.data.type}><NoticeRow entry={e} /></div>)}
+    <section class="list-card" data-year>
+      <h2>{a}</h2>
+      <div class="rows">{all.filter((e) => e.data.date.getFullYear() === a).map((e) => <div data-type={e.data.type}><NoticeRow entry={e} /></div>)}</div>
     </section>
   ))}
   <p class="note">Les documents officiels font foi dans leur version affichée en mairie. Pour les comptes rendus seuls, voir <a href={url('mairie/comptes-rendus/')}>Comptes rendus de réunion</a>.</p>

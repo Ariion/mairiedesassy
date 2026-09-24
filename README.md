@@ -1,7 +1,7 @@
 # Site de la commune de Sassy (14170, Calvados)
 
 Site vitrine de la mairie de Sassy, construit avec [Astro](https://astro.build) d’après la maquette Claude Design (`docs/design/`).
-Il s’agit d’un site statique, sans base de données ni cookie. La police Archivo est hébergée sur le site.
+Il s’agit d’un site statique, sans base de données ni cookie. Les polices (Fraunces, Inter) sont hébergées sur le site.
 
 ## Démarrer
 
@@ -57,6 +57,6 @@ src/
   layouts/          Base (barre, nav, pied de page) · Page (pages intérieures)
   components/       lignes d'affichage, événements, articles, revues
   pages/            une page par rubrique (5 rubriques, 17 pages)
-  styles/           design system Modernist + couleurs du blason
+  styles/site.css   feuille de style unique (couleurs du blason)
 docs/design/        maquette et cahier de passation Claude Design
 ```

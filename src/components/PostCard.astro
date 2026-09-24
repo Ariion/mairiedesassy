@@ -7,7 +7,7 @@ const d = entry.data;
 const n = d.commentaires.length;
 const date = d.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 ---
-<article class="post">
+<article class="post" data-auteur={d.auteur}>
   <span class="post-author">{d.auteur}</span>
   <h3><a href={url(`vie-locale/blog/${entry.id}/`)}>{d.titre}</a></h3>
   <p>{d.extrait}</p>

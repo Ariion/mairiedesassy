@@ -7,10 +7,10 @@ import { url } from '../../data/url';
 const { aVenir, passes } = await evenementsTries();
 ---
 <Page section="Vie locale" title="Événements" lead="L’agenda du village : fêtes, cérémonies, balades et rendez-vous des associations.">
-  <div class="cols-2" style="padding-top:0">
-    <section class="col">
+  <div class="cols-2">
+    <section class="panel">
       <div class="sec-head"><h2>À venir</h2></div>
-      {aVenir.length ? aVenir.map((e) => <EventRow entry={e} details />) : <p class="empty">Aucun événement annoncé pour le moment.</p>}
+      <div class="rows">{aVenir.length ? aVenir.map((e) => <EventRow entry={e} details />) : <p class="empty">Aucun événement annoncé pour le moment.</p>}</div>
     </section>
     <aside class="col">
       <div class="box box-green">
@@ -19,9 +19,9 @@ const { aVenir, passes } = await evenementsTries();
         <a class="btn btn-primary" href={url('contact/')}>Écrire à la mairie</a>
       </div>
       {passes.length > 0 && (
-        <div style="margin-top:40px">
+        <div class="panel" style="margin-top:24px">
           <div class="sec-head"><h2>Passés</h2></div>
-          {passes.slice(0, 6).map((e) => <EventRow entry={e} />)}
+          <div class="rows">{passes.slice(0, 6).map((e) => <EventRow entry={e} />)}</div>
         </div>
       )}
     </aside>
