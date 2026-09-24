@@ -40,7 +40,7 @@ Les coordonnées, les horaires et le nom du maire sont regroupés dans `src/data
 ## À faire avant la mise en ligne
 
 - [ ] Remplacer les **exemples fictifs** tirés de la maquette : affichage, événements, articles, menu, revues, annuaire. Ils sont signalés par un commentaire `EXEMPLE`.
-- [ ] Compléter `conseil.yaml` avec les adjoints et les conseillers, et **vérifier le nom du maire** après les municipales de mars 2026.
+- [ ] Indiquer les deux adjoints dans `conseil.yaml`.
 - [ ] Location de salle : ajouter capacité et tarifs (`src/pages/mairie/location-de-salle.astro`).
 - [ ] Nommer l’école et l’association patrimoine, et préciser leurs contacts.
 - [ ] Remplacer la marque quatre couleurs par le blason vectoriel officiel.

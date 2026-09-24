@@ -5,7 +5,7 @@ import Page from '../../layouts/Page.astro';
 const membres = (await getCollection('conseil')).map((m) => m.data).sort((a, b) => a.ordre - b.ordre);
 const renseignes = membres.filter((m) => !m.nom.startsWith('À compléter'));
 ---
-<Page section="Mairie" title="Le conseil municipal" lead="Le conseil municipal de Sassy compte 11 élus : le maire, deux adjoints et huit conseillers municipaux.">
+<Page section="Mairie" title="Le conseil municipal" lead="Le conseil municipal de Sassy compte 11 élus, installés après les élections municipales de mars 2026.">
   <div class="cards">
     {renseignes.map((m) => (
       <div class="card-line"><span class="role">{m.fonction}</span><h3>{m.nom}</h3></div>

@@ -1,14 +1,14 @@
-# Le conseil municipal compte 11 membres : le maire, 2 adjoints et 8 conseillers.
-# À COMPLÉTER : noms des adjoints et conseillers (à vérifier après les élections de 2026).
-- id: maire
-  nom: M. Dominique Varin
-  fonction: Maire
-  ordre: 1
-- id: adjoint-1
-  nom: À compléter
-  fonction: 1er adjoint
-  ordre: 2
-- id: adjoint-2
-  nom: À compléter
-  fonction: 2e adjoint
-  ordre: 3
+# Conseil municipal élu en mars 2026 (source : résultats Ouest-France).
+# 11 membres : le maire, 2 adjoints et 8 conseillers.
+# À COMPLÉTER : passer la « fonction » des deux adjoints à « 1er adjoint » / « 2e adjoint ».
+- { id: dominique-varin, nom: Dominique Varin, fonction: Maire, ordre: 1 }
+- { id: emilie-rousseau, nom: Émilie Rousseau, fonction: Conseillère municipale, ordre: 2 }
+- { id: florian-pecquet, nom: Florian Pecquet, fonction: Conseiller municipal, ordre: 3 }
+- { id: fanny-bettin, nom: Fanny Bettin, fonction: Conseillère municipale, ordre: 4 }
+- { id: nicolas-esnaud, nom: Nicolas Esnaud, fonction: Conseiller municipal, ordre: 5 }
+- { id: juliette-legrand, nom: Juliette Legrand, fonction: Conseillère municipale, ordre: 6 }
+- { id: lionel-debas, nom: Lionel Debas, fonction: Conseiller municipal, ordre: 7 }
+- { id: audrey-duval-lebret, nom: Audrey Duval-Lebret, fonction: Conseillère municipale, ordre: 8 }
+- { id: maxime-huver, nom: Maxime Huver, fonction: Conseiller municipal, ordre: 9 }
+- { id: camille-taillepied, nom: Camille Taillepied, fonction: Conseillère municipale, ordre: 10 }
+- { id: dominique-levavasseur, nom: Dominique Levavasseur, fonction: Conseiller municipal, ordre: 11 }
