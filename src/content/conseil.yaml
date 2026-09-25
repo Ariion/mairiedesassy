@@ -1,6 +1,6 @@
 # Conseil municipal élu en mars 2026 (source : résultats Ouest-France).
 # 11 membres : le maire, 2 adjoints et 8 conseillers.
-# À COMPLÉTER : passer la « fonction » des deux adjoints à « 1er adjoint » / « 2e adjoint ».
+# À COMPLÉTER : passer la « fonction » des deux adjoints à « 1er adjoint » / « 2e adjoint ».
 - { id: dominique-varin, nom: Dominique Varin, fonction: Maire, ordre: 1 }
 - { id: emilie-rousseau, nom: Émilie Rousseau, fonction: Conseillère municipale, ordre: 2 }
 - { id: florian-pecquet, nom: Florian Pecquet, fonction: Conseiller municipal, ordre: 3 }

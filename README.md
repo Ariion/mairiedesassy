@@ -1,7 +1,7 @@
 # Site de la commune de Sassy (14170, Calvados)
 
 Site vitrine de la mairie de Sassy, construit avec [Astro](https://astro.build) d’après la maquette Claude Design (`docs/design/`).
-Il s’agit d’un site statique, sans base de données ni cookie. Les polices (Fraunces, Inter) sont hébergées sur le site.
+Il s’agit d’un site statique, sans base de données ni cookie. Les polices (Instrument Serif, Inter) sont hébergées sur le site.
 
 ## Démarrer
 
@@ -43,8 +43,8 @@ Les coordonnées, les horaires et le nom du maire sont regroupés dans `src/data
 - [ ] Indiquer les deux adjoints dans `conseil.yaml`.
 - [ ] Location de salle : ajouter capacité et tarifs (`src/pages/mairie/location-de-salle.astro`).
 - [ ] Nommer l’école et l’association patrimoine, et préciser leurs contacts.
-- [ ] Remplacer le blason stylisé (`src/components/Blason.astro`) par le fichier vectoriel officiel.
-- [ ] Fournir des photos en haute définition (≥ 1600 px de large) pour le bandeau d’accueil et les actualités (champ `image`).
+- [ ] Obtenir le blason vectoriel officiel (à ajouter dans l’en-tête et le favicon).
+- [ ] Fournir des photos en haute définition (≥ 1600 px de large) pour l’accueil, l’histoire et les actualités (champ `image`).
 - [ ] Faire réaliser un audit RGAA et mettre à jour la page Accessibilité.
 - [ ] Ajouter des photos (`src/pages/decouvrir/photos.astro`).
 - [ ] Si des personnes non développeuses doivent publier : brancher Decap CMS sur `src/content/`.
@@ -59,7 +59,6 @@ src/
   layouts/          Base (barre, nav, pied de page) · Page (pages intérieures)
   components/       lignes d'affichage, événements, articles, revues
   pages/            accueil + 4 rubriques (La mairie, Démarches, Vie locale, Découvrir Sassy)
-  components/Blason.astro  blason stylisé (logo)
   styles/site.css   feuille de style unique (couleurs du blason)
 docs/design/        maquette et cahier de passation Claude Design
 ```

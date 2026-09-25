@@ -26,7 +26,7 @@ export const mairie = {
 export type NavItem = { label: string; href: string };
 export type NavSection = { label: string; short: string; href: string; items: NavItem[] };
 
-/** Arborescence du site : 4 menus déroulants (structure de la maquette « mairie »). */
+/** Arborescence du site : 4 menus déroulants (structure de la maquette « mairie »). */
 export const nav: NavSection[] = [
   {
     label: 'La mairie', short: 'Mairie', href: 'mairie/',

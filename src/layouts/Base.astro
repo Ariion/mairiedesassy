@@ -1,9 +1,9 @@
 ---
-import '@fontsource-variable/fraunces/full.css';
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
 import '@fontsource-variable/inter';
 import '../styles/site.css';
 import Icon from '../components/Icon.astro';
-import Blason from '../components/Blason.astro';
 import { mairie, nav } from '../data/site';
 import { url } from '../data/url';
 
@@ -13,10 +13,9 @@ interface Props {
   /** Rubrique courante (label de nav) pour aria-current. */
   section?: string;
 }
-const { title, description = 'Site officiel de la commune de Sassy (14170, Calvados) : actualités, démarches, agenda, école et cantine, histoire et patrimoine du village.', section } = Astro.props;
+const { title, description = 'Site officiel de la commune de Sassy (14170, Calvados) : démarches, actualités, agenda, école et cantine, histoire et patrimoine du village.', section } = Astro.props;
 const fullTitle = title ? `${title} · Commune de Sassy` : 'Commune de Sassy · 14170 · Calvados';
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const isHome = Astro.url.pathname === url();
 ---
 <!doctype html>
 <html lang="fr">
@@ -29,7 +28,7 @@ const isHome = Astro.url.pathname === url();
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
   <meta property="og:locale" content="fr_FR" />
-  <meta name="theme-color" content="#1f6b3a" />
+  <meta name="theme-color" content="#f4efe6" />
   <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
   <link rel="sitemap" href={url('sitemap-index.xml')} />
   <slot name="head" />
@@ -39,39 +38,38 @@ const isHome = Astro.url.pathname === url();
 
   <header class="header">
     <nav class="nav wrap" aria-label="Navigation principale">
-      <a class="nav-brand" href={url()}>
-        <Blason size={40} class="brand-blason" />
-        <span class="brand-text"><span class="brand-name">Sassy</span><span class="brand-sub">Commune de Sassy</span></span>
-      </a>
+      <a class="wordmark" href={url()} aria-label="Sassy, accueil"><b>Sassy</b><span>Commune du Calvados</span></a>
 
       <ul class="menu" role="list">
-        <li><a class="menu-link" href={url()} aria-current={isHome ? 'page' : undefined}>Accueil</a></li>
         {nav.map((s) => (
-          <li class="dd">
-            <a class="menu-link" href={url(s.href)} aria-current={section === s.label ? 'page' : undefined} aria-haspopup="true">
-              {s.label}<Icon name="chevron" size={14} />
-            </a>
+          <li>
+            <a class="menu-link" href={url(s.href)} aria-current={section === s.label ? 'page' : undefined}>{s.label}</a>
             <div class="dd-panel">
-              <ul role="list">
-                {s.items.map((i) => <li><a href={url(i.href)}>{i.label}</a></li>)}
-              </ul>
+              {s.items.map((i) => <a href={url(i.href)}>{i.label}</a>)}
             </div>
           </li>
         ))}
       </ul>
 
-      <a class="icon-btn" href={url('recherche/')} aria-label="Rechercher sur le site"><Icon name="search" size={20} /></a>
+      <div class="nav-tools">
+        <a class="tel" href={mairie.telephoneHref}>{mairie.telephone}</a>
+        <a href={url('recherche/')} aria-label="Rechercher sur le site"><Icon name="search" size={19} /></a>
+      </div>
 
       <details class="nav-menu">
-        <summary class="nav-toggle"><Icon name="menu" size={18} />Menu</summary>
+        <summary class="nav-toggle">Menu</summary>
         <div class="nav-menu-panel">
-          <div class="grp"><a class="grp-title" href={url()}>Accueil</a></div>
           {nav.map((s) => (
             <div class="grp">
-              <b>{s.label}</b>
+              <b class="label">{s.label}</b>
               {s.items.map((i) => <a href={url(i.href)}>{i.label}</a>)}
             </div>
           ))}
+          <div class="grp">
+            <b class="label">Mairie</b>
+            <a href={mairie.telephoneHref}>{mairie.telephone}</a>
+            <a href={url('recherche/')}>Rechercher</a>
+          </div>
         </div>
       </details>
     </nav>
@@ -82,22 +80,27 @@ const isHome = Astro.url.pathname === url();
   </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-top">
-      <a class="nav-brand" href={url()}>
-        <Blason size={34} />
-        <span class="brand-text"><span class="brand-name">Sassy</span><span class="brand-sub">Calvados · 14170</span></span>
-      </a>
-      <p>{mairie.adresse.join(', ')} · <a href={mairie.telephoneHref}>{mairie.telephone}</a> · <a href={`mailto:${mairie.email}`}>{mairie.email}</a></p>
+    <div class="blason-band" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="wrap footer-grid">
+      <div>
+        <div class="footer-mark">Sassy</div>
+        <p>Mairie de Sassy<br />{mairie.adresse.join(', ')}<br /><a href={mairie.telephoneHref}>{mairie.telephone}</a> · <a href={`mailto:${mairie.email}`}>{mairie.email}</a></p>
+      </div>
+      {nav.map((s) => (
+        <div>
+          <b>{s.label}</b>
+          <ul role="list">{s.items.map((i) => <li><a href={url(i.href)}>{i.label}</a></li>)}</ul>
+        </div>
+      ))}
     </div>
-    <div class="wrap footer-bar">
+    <div class="wrap footer-legal">
+      <span>© Commune de Sassy · Maire : {mairie.maire}</span>
       <ul role="list">
         <li><a href={url('mentions-legales/')}>Mentions légales</a></li>
         <li><a href={url('accessibilite/')}>Accessibilité</a></li>
         <li><a href={url('plan-du-site/')}>Plan du site</a></li>
-        <li><a href={url('contact/')}>Contact</a></li>
         <li><a href={mairie.interco.url}>Pays de Falaise</a></li>
       </ul>
-      <span>Commune de Sassy · 14170</span>
     </div>
   </footer>
 </body>
