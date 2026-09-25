@@ -2,6 +2,7 @@
 titre: Le porche Vauquelin, pierre par pierre
 auteur: Association patrimoine
 date: 2026-09-15
+image: ../../assets/sassy-tour.webp
 extrait: Retour sur la journée de relevés menée cet été avec les bénévoles.
 commentaires:
   - nom: Martine

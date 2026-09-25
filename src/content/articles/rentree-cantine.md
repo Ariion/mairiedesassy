@@ -2,6 +2,7 @@
 titre: "Rentrée : ce qui change pour la cantine"
 auteur: Mairie
 date: 2026-09-02
+image: ../../assets/sassy-mairie.webp
 extrait: Nouveaux horaires de garderie et inscription aux repas en ligne.
 commentaires:
   - nom: Sophie

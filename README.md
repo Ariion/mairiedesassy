@@ -1,7 +1,7 @@
 # Site de la commune de Sassy (14170, Calvados)
 
 Site vitrine de la mairie de Sassy, construit avec [Astro](https://astro.build) d’après la maquette Claude Design (`docs/design/`).
-Il s’agit d’un site statique, sans base de données ni cookie. Les polices (Instrument Serif, Inter) sont hébergées sur le site.
+Il s’agit d’un site statique, sans base de données ni cookie. La police (Figtree) est hébergée sur le site. Design : maquette Figma « Sassy – Site de la mairie ».
 
 ## Démarrer
 
@@ -43,7 +43,7 @@ Les coordonnées, les horaires et le nom du maire sont regroupés dans `src/data
 - [ ] Indiquer les deux adjoints dans `conseil.yaml`.
 - [ ] Location de salle : ajouter capacité et tarifs (`src/pages/mairie/location-de-salle.astro`).
 - [ ] Nommer l’école et l’association patrimoine, et préciser leurs contacts.
-- [ ] Obtenir le blason vectoriel officiel (à ajouter dans l’en-tête et le favicon).
+- [ ] Obtenir la version vectorielle (SVG) du blason ; la version image est dans `src/assets/blason-sassy.webp`.
 - [ ] Fournir des photos en haute définition (≥ 1600 px de large) pour l’accueil, l’histoire et les actualités (champ `image`).
 - [ ] Faire réaliser un audit RGAA et mettre à jour la page Accessibilité.
 - [ ] Ajouter des photos (`src/pages/decouvrir/photos.astro`).

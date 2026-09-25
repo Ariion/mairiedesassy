@@ -2,6 +2,7 @@
 titre: La kermesse de fin d’année en images
 auteur: SIVOM
 date: 2026-06-30
+image: ../../assets/sassy-mairie.webp
 extrait: Merci aux familles et aux bénévoles pour cette belle journée.
 ---
 

@@ -2,164 +2,172 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
-import NoticeRow from '../components/NoticeRow.astro';
+import Btn from '../components/Btn.astro';
 import { mairie } from '../data/site';
-import { dateBloc, dateLongue, url } from '../data/url';
-import { affichageRecent, evenementsTries, articlesRecents } from '../data/queries';
-import photoMairie from '../assets/sassy-mairie.webp';
+import { dateBloc, url } from '../data/url';
+import { evenementsTries, articlesRecents } from '../data/queries';
+import photoTour from '../assets/sassy-tour.webp';
 import photoEglise from '../assets/sassy-eglise.webp';
+import photoMairie from '../assets/sassy-mairie.webp';
 
-const [une, ...autres] = (await articlesRecents()).slice(0, 3);
-const affichage = (await affichageRecent()).slice(0, 4);
+const actus = (await articlesRecents()).slice(0, 3);
 const { aVenir } = await evenementsTries();
 const agenda = aVenir.slice(0, 3);
 
-const acces = [
-  { titre: 'État civil', txt: 'Naissance, mariage, PACS, décès', href: 'demarches/etat-civil/' },
-  { titre: 'Urbanisme', txt: 'Permis, déclaration préalable', href: 'demarches/urbanisme/' },
-  { titre: 'Cantine et école', txt: 'Menus de la semaine, SIVOM', href: 'ecole/menu-cantine/' },
-  { titre: 'Location de salle', txt: 'Fêtes, repas, réunions', href: 'mairie/location-de-salle/' },
-  { titre: 'Affichage mairie', txt: 'Arrêtés, avis, comptes rendus', href: 'mairie/affichage/' },
-  { titre: 'Cimetière', txt: 'Concessions, inhumations', href: 'demarches/cimetiere/' },
-];
-const reperes = [
-  { y: '1066', t: 'Un seigneur de « Sacy » combat à Hastings.' },
-  { y: 'XIIᵉ s.', t: 'Construction de l’église Saint-Gervais-et-Saint-Protais.' },
-  { y: '1498', t: 'La terre passe à la famille de Vauquelin.' },
-  { y: '1932', t: 'Le porche et le colombier du Châtelet sont classés.' },
+const tagAuteur: Record<string, string> = { Mairie: 'green', 'Association patrimoine': 'gold', SIVOM: 'blue', 'Comité des fêtes': 'red' };
+const dateCourte = (d: Date) => d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+const partenaires = [
+  { nom: 'Pays de Falaise', href: mairie.interco.url },
+  { nom: 'Calvados', href: 'https://www.calvados.fr' },
+  { nom: 'Région Normandie', href: 'https://www.normandie.fr' },
+  { nom: 'Service-Public.fr', href: 'https://www.service-public.fr' },
 ];
 ---
 <Base>
-  <div class="wrap">
-    <section class="home-hero">
-      <div>
-        <span class="label">Commune du Pays de Falaise · Calvados</span>
-        <h1>Sassy</h1>
-        <p class="intro">Un village normand, entre la plaine et <em>la vallée de la Dives.</em></p>
+  <div class="wrap hero-wrap">
+    <section class="hero" aria-labelledby="titre">
+      <Image src={photoTour} alt="Tour de pierre dans la campagne de Sassy" widths={[800, 1280, 2000]} sizes="(max-width: 1440px) 100vw, 1280px" loading="eager" fetchpriority="high" />
+      <div class="hero-content">
+        <span class="chip chip-glass">Commune de Sassy · 14170</span>
+        <h1 id="titre">Bienvenue à <em>Sassy</em>, village du Pays de Falaise.</h1>
+        <p>Démarches, affichage municipal, agenda, école et patrimoine : toute la vie de la commune, au même endroit.</p>
         <div class="actions">
-          <a class="btn btn-primary" href={url('demarches/etat-civil/')}>Vos démarches <Icon name="arrow" size={18} /></a>
-          <a class="link-arrow" href={url('vie-locale/evenements/')}>L’agenda du village <Icon name="arrow" size={16} /></a>
+          <Btn href={url('demarches/etat-civil/')} variant="white">Faire une démarche</Btn>
+          <Btn href={url('vie-locale/evenements/')} variant="outline">Agenda du village</Btn>
         </div>
-        <div class="coords label"><span>48°59′ N · 0°08′ O</span><span>Altitude {mairie.altitude}</span><span>INSEE {mairie.insee}</span></div>
       </div>
-      <figure>
-        <Image src={photoEglise} alt="L’église Saint-Gervais-et-Saint-Protais de Sassy" widths={[640, 675]} sizes="(max-width: 900px) 100vw, 640px" loading="eager" fetchpriority="high" />
-        <figcaption>L’église Saint-Gervais-et-Saint-Protais, XIIᵉ siècle.</figcaption>
-      </figure>
+      <div class="hero-hours">
+        <span class="open">MAIRIE OUVERTE</span>
+        <strong>Lun. 11h–12h · Jeu. 14h–15h · Sam. 8h–12h (RDV)</strong>
+        <span><a href={mairie.telephoneHref}>{mairie.telephone}</a> · <a href={`mailto:${mairie.email}`}>{mairie.email}</a></span>
+      </div>
     </section>
 
-    <div class="figures">
-      <div><b>{mairie.population}</b><span>habitants ({mairie.populationAnnee})</span></div>
-      <div><b>{mairie.superficie}</b><span>de territoire communal</span></div>
-      <div><b>XIIᵉ</b><span>siècle, l’église du village</span></div>
-      <div><b>1066</b><span>un seigneur de « Sacy » à Hastings</span></div>
+    <div class="partners">
+      <span>Avec</span>
+      {partenaires.map((p) => <a href={p.href}>{p.nom}</a>)}
     </div>
+  </div>
 
-    <section class="block" aria-labelledby="acces">
-      <div class="block-head">
-        <h2 id="acces">Accès <em>rapides</em></h2>
-        <p>Les démarches et services les plus demandés en mairie.</p>
+  <section class="wrap sec" aria-labelledby="univers">
+    <div class="sec-title">
+      <span class="chip">Pour vous</span>
+      <h2 id="univers">Deux façons de vivre Sassy.</h2>
+      <p>Vous habitez la commune ou vous venez la découvrir : choisissez votre porte d’entrée.</p>
+    </div>
+    <div class="duo">
+      <article class="univers univers-green">
+        <span class="ico"><Icon name="home" size={22} /></span>
+        <h3>J’habite Sassy</h3>
+        <p>Démarches, affichage, menus de la cantine, location de la salle communale : les services de la mairie au quotidien.</p>
+        <div class="pills">
+          <a href={url('demarches/etat-civil/')}>État civil</a><a href={url('demarches/urbanisme/')}>Urbanisme</a><a href={url('ecole/menu-cantine/')}>Cantine</a><a href={url('mairie/location-de-salle/')}>Location de salle</a>
+        </div>
+        <Btn href={url('mairie/')} variant="white">Services aux habitants</Btn>
+      </article>
+      <article class="univers univers-blue">
+        <span class="ico"><Icon name="leaf" size={22} /></span>
+        <h3>Je découvre Sassy</h3>
+        <p>Une église du XIIᵉ siècle, le porche des Vauquelin, les chemins de la plaine : mille ans d’histoire à parcourir.</p>
+        <div class="pills">
+          <a href={url('decouvrir/histoire/')}>Histoire</a><a href={url('decouvrir/patrimoine/')}>Patrimoine</a><a href={url('decouvrir/photos/')}>Photos</a><a href={url('decouvrir/carte/')}>Carte</a>
+        </div>
+        <Btn href={url('decouvrir/histoire/')} variant="blue">Découvrir le village</Btn>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap sec" style="padding-top:0" aria-labelledby="moment">
+    <div class="sec-row">
+      <div class="sec-title">
+        <span class="chip">Actualités</span>
+        <h2 id="moment">En ce moment à Sassy</h2>
       </div>
-      <nav class="quick" aria-labelledby="acces">
-        {acces.map((a, i) => (
-          <a href={url(a.href)}>
-            <span class="n">{String(i + 1).padStart(2, '0')}</span>
-            <span><b>{a.titre}</b><small>{a.txt}</small></span>
-            <Icon name="arrow" size={20} />
-          </a>
-        ))}
-      </nav>
-    </section>
-
-    <section class="news-board" style="padding-bottom:clamp(56px,8vw,104px)">
-      <div>
-        <div class="col-title"><h2>Actualités</h2><a href={url('vie-locale/blog/')}>Toutes les actualités</a></div>
-        {une && (
-          <article class="lead-story">
-            <span class="kicker">{une.data.auteur} · {dateLongue(une.data.date)}</span>
-            <h3><a href={url(`vie-locale/blog/${une.id}/`)}>{une.data.titre}</a></h3>
-            <p>{une.data.extrait}</p>
-          </article>
-        )}
-        {autres.map((a) => (
-          <article class="story">
-            <span class="label">{a.data.auteur}</span>
+      <Btn href={url('vie-locale/blog/')}>Toutes les actualités</Btn>
+    </div>
+    <div class="news">
+      {actus.map((a) => (
+        <article class="news-card">
+          <Image src={a.data.image ?? photoMairie} alt="" widths={[400, 800]} sizes="(max-width: 760px) 100vw, 400px" />
+          <div class="body">
+            <div class="meta"><span class={`tag tag-${tagAuteur[a.data.auteur]}`}>{a.data.auteur}</span>{dateCourte(a.data.date)}</div>
             <h3><a href={url(`vie-locale/blog/${a.id}/`)}>{a.data.titre}</a></h3>
-            <span class="meta">{dateLongue(a.data.date)}</span>
-          </article>
-        ))}
-      </div>
-      <div>
-        <div class="col-title"><h2>Affichage mairie</h2><a href={url('mairie/affichage/')}>Tout voir</a></div>
-        {affichage.map((e) => <NoticeRow entry={e} />)}
-      </div>
-    </section>
-  </div>
-
-  <section class="agenda-band" aria-labelledby="agenda">
-    <div class="wrap block">
-      <div class="block-head">
-        <h2 id="agenda">Agenda <em>du village</em></h2>
-        <a class="link-arrow" href={url('vie-locale/evenements/')}>Tout l’agenda <Icon name="arrow" size={16} /></a>
-      </div>
-      {agenda.length ? (
-        <div class="agenda-row">
-          {agenda.map((e) => {
-            const { jour, mois } = dateBloc(e.data.date);
-            return (
-              <article class="ag">
-                <div class="ag-date"><b>{jour}</b><span>{mois}</span></div>
-                <h3>{e.data.titre}</h3>
-                <p>{e.data.lieu}{e.data.heure && ` · ${e.data.heure}`}</p>
-                <span class="kicker">{e.data.organisateur}</span>
-              </article>
-            );
-          })}
-        </div>
-      ) : <p class="empty">Aucun événement annoncé pour le moment.</p>}
+            <p>{a.data.extrait}</p>
+            <span class="more">Lire la suite <Icon name="arrowUR" size={14} /></span>
+          </div>
+        </article>
+      ))}
     </div>
   </section>
 
-  <section class="heritage" aria-labelledby="histoire">
-    <div class="wrap">
-      <figure>
-        <Image src={photoEglise} alt="Église Saint-Gervais-et-Saint-Protais de Sassy" widths={[640, 675]} sizes="(max-width: 900px) 100vw, 600px" />
-        <figcaption>Roman et gothique mêlés : l’église et sa chapelle seigneuriale des Vauquelin.</figcaption>
-      </figure>
-      <div>
-        <span class="kicker">Histoire et patrimoine</span>
-        <h2 id="histoire">Du Châtelet aux Vauquelin, <em>mille ans d’histoire.</em></h2>
-        <p>Un château fort dominait l’entrée du village. En 1498, la terre passe aux Vauquelin, dont le poète Jean Vauquelin de la Fresnaye (1535–1607). De leur manoir subsistent un porche monumental et un colombier.</p>
-        <ol class="years">
-          {reperes.map((r) => <li><b>{r.y}</b><span>{r.t}</span></li>)}
-        </ol>
-        <a class="link-arrow" href={url('decouvrir/histoire/')}>Lire l’histoire du village <Icon name="arrow" size={16} /></a>
+  <div class="wrap" style="padding-bottom:clamp(56px,7vw,80px)">
+    <section class="heritage" aria-labelledby="histoire">
+      <div class="text">
+        <span class="chip chip-gold">Patrimoine</span>
+        <h2 id="histoire">Mille ans d’histoire, du Châtelet aux Vauquelin.</h2>
+        <p>En 1498, la terre de Sassy passe à la famille de Vauquelin, dont le poète Jean Vauquelin de la Fresnaye. De leur manoir subsistent un porche monumental et un colombier.</p>
+        <ul class="checks">
+          <li><Icon name="check" size={14} />Église Saint-Gervais-et-Saint-Protais, XIIᵉ siècle</li>
+          <li><Icon name="check" size={14} />Porche et colombier du Châtelet, classés en 1932</li>
+          <li><Icon name="check" size={14} />Un seigneur de «&nbsp;Sacy&nbsp;» à Hastings en 1066</li>
+        </ul>
+        <Btn href={url('decouvrir/histoire/')} variant="white">L’histoire du village</Btn>
       </div>
-    </div>
-  </section>
-
-  <div class="wrap block">
-    <section class="townhall" aria-labelledby="mairie">
-      <div>
-        <span class="kicker">Nous rendre visite</span>
-        <h2 id="mairie" style="margin-top:16px">La mairie</h2>
-        <address>{mairie.adresse[0]}<br />{mairie.adresse[1]}</address>
-        <table class="hours">
-          <caption class="sr-only">Horaires d’ouverture</caption>
-          <tbody>
-            {mairie.horaires.map((h) => <tr><th scope="row">{h.jour}</th><td>{h.heures}{h.note && ` · ${h.note}`}</td></tr>)}
-          </tbody>
-        </table>
-        <div class="contact-lines">
-          <a href={mairie.telephoneHref}>{mairie.telephone}</a>
-          <a href={`mailto:${mairie.email}`}>{mairie.email}</a>
-        </div>
-        <a class="btn btn-secondary" href={url('contact/')}>Écrire à la mairie <Icon name="arrow" size={18} /></a>
-      </div>
-      <figure>
-        <Image src={photoMairie} alt="La mairie de Sassy et le monument aux morts" widths={[640, 675]} sizes="(max-width: 900px) 100vw, 600px" />
-        <figcaption>La mairie et le monument aux morts, rue de la Forge.</figcaption>
+      <figure class="collage">
+        <span class="disc" aria-hidden="true"></span>
+        <Image class="c1" src={photoEglise} alt="L’église Saint-Gervais-et-Saint-Protais" widths={[400, 675]} sizes="330px" />
+        <Image class="c2" src={photoTour} alt="Tour de pierre dans la campagne" widths={[400, 800]} sizes="250px" />
+        <Image class="c3" src={photoMairie} alt="La mairie et le monument aux morts" widths={[400, 675]} sizes="250px" />
       </figure>
     </section>
   </div>
+
+  <section class="wrap sec" style="padding-top:0" aria-labelledby="chiffres">
+    <div class="sec-title center">
+      <span class="chip">Sassy en chiffres</span>
+      <h2 id="chiffres">Un village à taille humaine.</h2>
+      <p>Au cœur du Pays de Falaise, entre plaine de Caen et vallée de la Dives.</p>
+    </div>
+    <div class="figures">
+      <div class="figure figure-white"><b>{mairie.population}</b><span>habitants ({mairie.populationAnnee})</span></div>
+      <div class="figure figure-green"><b>{mairie.superficie}</b><span>de plaine et de vallée</span></div>
+      <div class="figure figure-blue"><b>XIIᵉ</b><span>siècle : l’église du village</span></div>
+      <div class="figure figure-red"><b>1066</b><span>un seigneur de «&nbsp;Sacy&nbsp;» à Hastings</span></div>
+    </div>
+  </section>
+
+  <section class="wrap sec" style="padding-top:0">
+    <div class="split">
+      <div class="agenda">
+        <div class="sec-row" style="margin-bottom:0">
+          <div class="sec-title" style="margin:0">
+            <span class="chip chip-red">Agenda</span>
+            <h2>Prochains rendez-vous</h2>
+          </div>
+          <a class="link-more" href={url('vie-locale/evenements/')}>Tout l’agenda <Icon name="arrowUR" size={15} /></a>
+        </div>
+        {agenda.length ? agenda.map((e) => {
+          const { jour, mois } = dateBloc(e.data.date);
+          return (
+            <article class="ev">
+              <div class="ev-date"><b>{jour}</b><span>{mois.replace('.', '')}</span></div>
+              <div><h3>{e.data.titre}</h3><p>{e.data.lieu}{e.data.heure && ` · ${e.data.heure}`}</p></div>
+            </article>
+          );
+        }) : <p class="empty">Aucun événement annoncé pour le moment.</p>}
+      </div>
+
+      <section class="townhall" aria-labelledby="mairie">
+        <Image src={photoMairie} alt="La mairie de Sassy, rue de la Forge" widths={[600, 675]} sizes="(max-width: 980px) 100vw, 560px" />
+        <h2 id="mairie">La mairie vous répond</h2>
+        <dl>
+          <dt>Adresse</dt><dd>{mairie.adresse.join(' · ')}</dd>
+          <dt>Horaires</dt><dd>Lun. 11h–12h · Jeu. 14h–15h · Sam. 8h–12h (RDV)</dd>
+          <dt>Téléphone</dt><dd><a href={mairie.telephoneHref}>{mairie.telephone}</a></dd>
+          <dt>E-mail</dt><dd><a href={`mailto:${mairie.email}`}>{mairie.email}</a></dd>
+        </dl>
+        <Btn href={url('contact/')}>Écrire à la mairie</Btn>
+      </section>
+    </div>
+  </section>
 </Base>

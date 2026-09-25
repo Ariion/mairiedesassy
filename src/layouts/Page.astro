@@ -16,26 +16,24 @@ const rubrique = nav.find((s) => s.label === section);
 const here = Astro.url.pathname;
 ---
 <Base title={title} description={description ?? lead} section={section}>
-  <div class="page-hero">
-    <div class="wrap">
-      <header class="page-head">
-        <nav class="crumbs" aria-label="Fil d’Ariane">
-          <a href={url()}>Accueil</a><span aria-hidden="true">›</span><span>{section}</span>
-        </nav>
-        {kicker && <span class="kicker">{kicker}</span>}
-        <h1>{title}</h1>
-        {lead && <p class="lead">{lead}</p>}
-      </header>
-      {rubrique && rubrique.items.length > 1 && (
-        <nav class="subnav" aria-label={`Rubrique ${section}`}>
-          {rubrique.items.map((i) => {
-            const href = url(i.href);
-            const current = here === href || (i.href !== rubrique.items[0].href && here.startsWith(href));
-            return <a href={href} aria-current={current ? 'page' : undefined}>{i.label}</a>;
-          })}
-        </nav>
-      )}
-    </div>
+  <div class="wrap page-hero">
+    <header class="page-head">
+      <nav class="crumbs" aria-label="Fil d’Ariane">
+        <a href={url()}>Accueil</a><span aria-hidden="true">›</span><span>{section}</span>
+      </nav>
+      {kicker && <span class="kicker">{kicker}</span>}
+      <h1>{title}</h1>
+      {lead && <p class="lead">{lead}</p>}
+    </header>
+    {rubrique && rubrique.items.length > 1 && (
+      <nav class="subnav" aria-label={`Rubrique ${section}`}>
+        {rubrique.items.map((i) => {
+          const href = url(i.href);
+          const current = here === href || (i.href !== rubrique.items[0].href && here.startsWith(href));
+          return <a href={href} aria-current={current ? 'page' : undefined}>{i.label}</a>;
+        })}
+      </nav>
+    )}
   </div>
   <div class="wrap page-body">
     <slot />

@@ -4,9 +4,11 @@ import Page from '../../layouts/Page.astro';
 import { url } from '../../data/url';
 import photoMairie from '../../assets/sassy-mairie.webp';
 import photoEglise from '../../assets/sassy-eglise.webp';
+import photoTour from '../../assets/sassy-tour.webp';
 
 // Pour ajouter une photo : déposer le fichier dans src/assets/ et l'ajouter à cette liste.
 const photos = [
+  { src: photoTour, legende: 'Tour de pierre dans la campagne de Sassy' },
   { src: photoMairie, legende: 'La mairie et le monument aux morts' },
   { src: photoEglise, legende: 'Église Saint-Gervais-et-Saint-Protais, XIIᵉ siècle' },
 ];
