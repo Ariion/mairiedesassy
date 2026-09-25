@@ -1,0 +1,40 @@
+---
+import Page from '../../layouts/Page.astro';
+import { mairie } from '../../data/site';
+import { url } from '../../data/url';
+---
+<Page section="Démarches" title="Urbanisme" lead="Construire, agrandir, rénover, clôturer : quelle autorisation demander, et où déposer son dossier.">
+  <div class="layout-aside">
+    <div class="prose">
+      <h2>Quelle autorisation ?</h2>
+      <ul>
+        <li><strong>Déclaration préalable</strong> : petits travaux (abri de jardin, clôture, ravalement, modification de façade, extension modeste, piscine…).</li>
+        <li><strong>Permis de construire</strong> : construction nouvelle ou extension importante.</li>
+        <li><strong>Permis d’aménager</strong> et <strong>permis de démolir</strong> : lotissements, démolitions en secteur protégé.</li>
+        <li><strong>Certificat d’urbanisme</strong> : connaître les règles applicables à un terrain avant un achat ou un projet.</li>
+      </ul>
+      <p>Le simulateur officiel vous indique l’autorisation nécessaire : <a href="https://www.service-public.fr/particuliers/vosdroits/N319">service-public.fr, rubrique urbanisme</a>.</p>
+      <h2>Déposer son dossier</h2>
+      <ol class="steps">
+        <li>Consultez les règles du document d’urbanisme en vigueur (PLUi du Pays de Falaise) en mairie ou sur le <a href="https://www.geoportail-urbanisme.gouv.fr/">Géoportail de l’urbanisme</a>.</li>
+        <li>Remplissez le formulaire Cerfa correspondant et joignez les plans demandés.</li>
+        <li>Déposez le dossier en mairie ou en ligne. Un récépissé vous indique le délai d’instruction.</li>
+        <li>Une fois l’autorisation obtenue, affichez-la sur le terrain pendant toute la durée des travaux.</li>
+      </ol>
+      <h2>Monuments historiques</h2>
+      <p>Aux abords de l’église et de la ferme du Châtelet, protégées au titre des monuments historiques, les travaux visibles sont soumis à l’avis de l’Architecte des Bâtiments de France. Anticipez un délai d’instruction plus long.</p>
+    </div>
+    <aside>
+      <div class="box box-green">
+        <h2>Un projet ?</h2>
+        <p>Parlez-en en mairie avant de déposer votre dossier : nous vous aiderons à identifier les règles et les pièces à fournir.</p>
+        <p><a href={mairie.telephoneHref}>{mairie.telephone}</a></p>
+        <a class="btn btn-primary" href={url('contact/')}>Nous contacter</a>
+      </div>
+      <div class="box">
+        <h3>Intercommunalité</h3>
+        <p>Le PLUi est élaboré par la <a href={mairie.interco.url}>{mairie.interco.nom}</a>.</p>
+      </div>
+    </aside>
+  </div>
+</Page>

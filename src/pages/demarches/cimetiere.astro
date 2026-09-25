@@ -1,0 +1,26 @@
+---
+import Page from '../../layouts/Page.astro';
+import { mairie } from '../../data/site';
+import { url } from '../../data/url';
+---
+<Page section="Démarches" title="Cimetière" lead="Concessions, inhumations, entretien des sépultures : les démarches auprès de la mairie.">
+  <div class="layout-aside">
+    <div class="prose">
+      <h2>Concessions</h2>
+      <p>L’achat, le renouvellement ou la conversion d’une concession se font en mairie. La durée et les tarifs sont fixés par délibération du conseil municipal : renseignez-vous auprès du secrétariat.</p>
+      <h2>Inhumation</h2>
+      <p>Toute inhumation nécessite une autorisation du maire. Les démarches sont en général prises en charge par l’entreprise de pompes funèbres choisie par la famille.</p>
+      <h2>Travaux et entretien</h2>
+      <p>L’entretien des sépultures incombe aux familles. Avant tous travaux (pose de monument, gravure), une déclaration est à faire en mairie.</p>
+      <p>Pour en savoir plus : <a href="https://www.service-public.fr/particuliers/vosdroits/F31064">concessions funéraires sur service-public.fr</a>.</p>
+    </div>
+    <aside>
+      <div class="box box-green">
+        <h2>Renseignements</h2>
+        <p>Secrétariat de mairie, aux heures de permanence.</p>
+        <p><a href={mairie.telephoneHref}>{mairie.telephone}</a><br /><a href={`mailto:${mairie.email}`}>{mairie.email}</a></p>
+        <a class="btn btn-primary" href={url('contact/')}>Nous contacter</a>
+      </div>
+    </aside>
+  </div>
+</Page>

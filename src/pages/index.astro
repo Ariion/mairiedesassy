@@ -2,141 +2,124 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
-import NoticeRow from '../components/NoticeRow.astro';
-import EventRow from '../components/EventRow.astro';
-import PostCard from '../components/PostCard.astro';
+import Blason from '../components/Blason.astro';
+import NewsCard from '../components/NewsCard.astro';
+import BriefRow from '../components/BriefRow.astro';
 import { mairie } from '../data/site';
-import { url } from '../data/url';
+import { dateBloc, url } from '../data/url';
 import { affichageRecent, evenementsTries, articlesRecents } from '../data/queries';
 import photoMairie from '../assets/sassy-mairie.webp';
 import photoEglise from '../assets/sassy-eglise.webp';
 
-/** Options : photo du bandeau d'accueil et affichage du blog. */
-const photoAccueil: 'Mairie' | 'Église' = 'Mairie';
-const afficherBlog = true;
-
-const affichage = (await affichageRecent()).slice(0, 4);
+const aLaUne = (await articlesRecents()).slice(0, 2);
+const brefs = (await affichageRecent()).slice(0, 4);
 const { aVenir } = await evenementsTries();
-const events = aVenir.slice(0, 3);
-const posts = (await articlesRecents()).slice(0, 3);
+const agenda = aVenir.slice(0, 3);
 
-const services = [
-  { icon: 'utensils', titre: 'Menu de la cantine', txt: 'Les repas de la semaine pour les élèves du SIVOM.', href: 'ecole/menu-cantine/' },
-  { icon: 'key', titre: 'Location de salle', txt: 'Tarifs, capacité et contact pour réserver la salle communale.', href: 'mairie/location-de-salle/' },
-  { icon: 'book', titre: 'Revues du village', txt: 'La revue mensuelle et la revue trimestrielle en PDF.', href: 'vie-locale/revue-mensuelle/' },
-  { icon: 'briefcase', titre: 'Annuaire des pros', txt: 'Artisans, agriculteurs, gîtes et commerces de Sassy.', href: 'vie-locale/annuaire/' },
+const demarches = [
+  { icon: 'clipboard', titre: 'État civil', txt: 'Naissance, mariage, décès, PACS…', href: 'demarches/etat-civil/' },
+  { icon: 'home', titre: 'Urbanisme', txt: 'Permis, déclaration préalable, certificat…', href: 'demarches/urbanisme/' },
+  { icon: 'school', titre: 'École', txt: 'Inscriptions, cantine, périscolaire…', href: 'ecole/menu-cantine/' },
+  { icon: 'cross', titre: 'Cimetière', txt: 'Concessions, inhumations, entretien…', href: 'demarches/cimetiere/' },
 ];
 ---
 <Base>
-  <div class="wrap">
-    <section class="hero">
-      <div class="hero-img">
-        <Image
-          src={photoAccueil === 'Mairie' ? photoMairie : photoEglise}
-          alt={photoAccueil === 'Mairie' ? 'La mairie de Sassy et le monument aux morts' : 'L’église de Sassy'}
-          widths={[800, 1200, 1600]} sizes="(max-width: 1240px) 100vw, 1200px" loading="eager" fetchpriority="high"
-        />
-      </div>
-      <div class="hero-inner">
-        <div class="hero-text">
-          <span class="kicker">Commune de Sassy · Pays de Falaise</span>
-          <h1>Bienvenue <br /><em>à Sassy.</em></h1>
-          <p class="lead">Un village normand entre plaine et vallée de la Dives. Retrouvez ici l’affichage municipal, l’agenda, la vie de l’école et mille ans d’histoire.</p>
-          <div class="actions">
-            <a class="btn btn-light" href={url('mairie/affichage/')}>Voir l’affichage mairie <Icon name="arrow" size={18} /></a>
-            <a class="btn btn-glass" href={url('vie-locale/evenements/')}>Agenda du village</a>
-          </div>
-        </div>
-        <aside class="hero-card" aria-label="Horaires de la mairie">
-          <h2><Icon name="clock" size={16} />Horaires de la mairie</h2>
-          <dl>
-            {mairie.horaires.map((h) => (<><dt>{h.jour}</dt><dd>{h.heures}{h.note && ' (RDV)'}</dd></>))}
-          </dl>
-          <a href={mairie.telephoneHref}><Icon name="phone" size={16} />{mairie.telephone}</a>
-        </aside>
-      </div>
-    </section>
-
-    <div class="stats">
-      <div class="stat"><span class="stat-n">{mairie.population}</span><span class="stat-l">habitants ({mairie.populationAnnee})</span></div>
-      <div class="stat"><span class="stat-n">{mairie.superficie}</span><span class="stat-l">de plaine et de vallée</span></div>
-      <div class="stat"><span class="stat-n">XIIᵉ</span><span class="stat-l">siècle : l’église St-Gervais-St-Protais</span></div>
-      <div class="stat"><span class="stat-n">1066</span><span class="stat-l">un seigneur de « Sacy » à Hastings</span></div>
+  <section class="hero">
+    <div class="hero-img">
+      <Image src={photoEglise} alt="L’église Saint-Gervais-et-Saint-Protais de Sassy" widths={[800, 1200, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
     </div>
-
-    <section class="section cols-2">
-      <div id="affichage" class="panel">
-        <div class="sec-head">
-          <h2><span class="panel-ico"><Icon name="file" /></span>Affichage mairie</h2>
-          <a class="btn btn-ghost" href={url('mairie/affichage/')}>Tout voir <Icon name="arrow" size={16} /></a>
-        </div>
-        <div class="rows">{affichage.map((e) => <NoticeRow entry={e} />)}</div>
-      </div>
-      <div id="agenda" class="panel">
-        <div class="sec-head">
-          <h2><span class="panel-ico red"><Icon name="calendar" /></span>Événements</h2>
-          <a class="btn btn-ghost" href={url('vie-locale/evenements/')}>Agenda complet <Icon name="arrow" size={16} /></a>
-        </div>
-        <div class="rows">
-          {events.length ? events.map((e) => <EventRow entry={e} />) : <p class="empty">Aucun événement annoncé pour le moment.</p>}
-        </div>
-      </div>
-    </section>
-
-    <section class="section" style="padding-top:8px">
-      <div class="sec-head"><div><span class="kicker">Services</span><h2 style="margin-top:12px">Au quotidien</h2></div></div>
-      <div class="tiles">
-        {services.map((s) => (
-          <a class="tile" href={url(s.href)}>
-            <span class="tile-ico"><Icon name={s.icon} size={22} /></span>
-            <span class="tile-t">{s.titre}</span>
-            <span class="tile-x">{s.txt}</span>
-            <Icon name="arrow" size={18} class="tile-go" />
-          </a>
-        ))}
-      </div>
-    </section>
-
-    {afficherBlog && posts.length > 0 && (
-      <section class="section">
-        <div class="sec-head">
-          <div><span class="kicker">Vie locale</span><h2 style="margin-top:12px">Le blog du village</h2></div>
-          <a class="btn btn-secondary" href={url('vie-locale/blog/')}>Tous les articles <Icon name="arrow" size={16} /></a>
-        </div>
-        <div class="posts">{posts.map((p) => <PostCard entry={p} />)}</div>
-      </section>
-    )}
-
-    <section id="decouvrir" class="discover">
-      <div class="discover-media">
-        <Image src={photoEglise} alt="Église Saint-Gervais-et-Saint-Protais de Sassy" widths={[600, 900, 1200]} sizes="(max-width: 900px) 100vw, 560px" />
-        <div class="badge"><b>XIIᵉ</b><span>Église Saint-Gervais-et-Saint-Protais, entre roman et gothique</span></div>
-      </div>
-      <div class="discover-text">
-        <span class="kicker">Découvrir Sassy</span>
-        <h2>Du Châtel aux Vauquelin, <em>mille ans d’histoire</em></h2>
-        <p>Un château fort, le « Châtelet », dominait l’entrée du village. En 1498, la terre passe à la famille de Vauquelin, dont le poète Jean Vauquelin de la Fresnaye (1535–1607). Son manoir a laissé un porche monumental, protégé au titre des monuments historiques.</p>
+    <div class="wrap hero-inner">
+      <div class="hero-card">
+        <h1>Bienvenue à Sassy</h1>
+        <p>Retrouvez ici les actualités de la commune, les informations pratiques et vos démarches auprès de la mairie.</p>
         <div class="actions">
-          <a class="btn btn-primary" href={url('decouvrir/histoire/')}>L’histoire du village <Icon name="arrow" size={18} /></a>
-          <a class="btn btn-secondary" href={url('decouvrir/photos/')}>Photos</a>
-          <a class="btn btn-secondary" href={url('decouvrir/carte/')}>Carte</a>
+          <a class="btn btn-primary" href={url('vie-locale/blog/')}><Icon name="newspaper" size={18} />Actualités</a>
+          <a class="btn btn-secondary" href={url('demarches/etat-civil/')}><Icon name="users" size={18} />Démarches</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <div class="wrap home-grid">
+    <section class="une" aria-labelledby="une">
+      <h2 class="h-rule" id="une">À la une</h2>
+      <div class="news-grid">{aLaUne.map((a) => <NewsCard entry={a} />)}</div>
+      <a class="more" href={url('vie-locale/blog/')}>Voir toutes les actualités <Icon name="arrow" size={16} /></a>
     </section>
 
-    <section id="contact" class="contact-band">
-      <div class="contact-card">
-        <div>
-          <h2>Une question ?<br /><em>La mairie vous répond.</em></h2>
-          <p>Démarches, location de salle, état civil : passez aux permanences ou écrivez-nous.</p>
-          <a class="btn btn-light" href={url('contact/')}>Écrire à la mairie <Icon name="arrow" size={18} /></a>
+    <aside class="moment" aria-labelledby="moment">
+      <h2 class="h-ico" id="moment"><Icon name="megaphone" size={24} />En ce moment à Sassy</h2>
+      <div class="briefs">{brefs.map((b) => <BriefRow entry={b} />)}</div>
+      <a class="more" href={url('mairie/affichage/')}>Tout l’affichage mairie <Icon name="arrow" size={16} /></a>
+    </aside>
+  </div>
+
+  <div class="wrap">
+    <section class="demarches" aria-labelledby="demarches">
+      <div class="demarches-main">
+        <h2 class="h-ico" id="demarches"><Icon name="clipboard" size={26} />Vos démarches</h2>
+        <div class="dem-grid">
+          {demarches.map((d) => (
+            <a class="dem" href={url(d.href)}>
+              <Icon name={d.icon} size={30} />
+              <b>{d.titre}</b>
+              <span>{d.txt}</span>
+              <Icon name="arrow" size={16} class="dem-go" />
+            </a>
+          ))}
         </div>
-        <div class="contact-cols">
-          <div><span class="lbl"><Icon name="pin" size={16} />Adresse</span>{mairie.adresse[0]}<br />{mairie.adresse[1]}</div>
-          <div><span class="lbl"><Icon name="clock" size={16} />Horaires</span>Lundi 11h–12h<br />Jeudi 14h–15h<br />Samedi 8h–12h (RDV)</div>
-          <div><span class="lbl"><Icon name="phone" size={16} />Joindre</span><a href={mairie.telephoneHref}>{mairie.telephone}</a><a href={`mailto:${mairie.email}`}>{mairie.email}</a></div>
-        </div>
+      </div>
+      <div class="demarches-art" aria-hidden="true"><Blason size={150} /></div>
+    </section>
+  </div>
+
+  <div class="wrap home-grid bottom">
+    <section class="agenda" aria-labelledby="agenda">
+      <h2 class="h-ico" id="agenda"><Icon name="calendar" size={26} />Agenda</h2>
+      <div class="agenda-list">
+        {agenda.length ? agenda.map((e) => {
+          const { jour, mois } = dateBloc(e.data.date);
+          return (
+            <div class="ag">
+              <span class="ag-date"><b>{jour}</b>{mois}</span>
+              <span class="ag-body"><b>{e.data.titre}</b><span>{e.data.heure && `À ${e.data.heure} – `}{e.data.lieu}</span></span>
+            </div>
+          );
+        }) : <p class="empty">Aucun événement annoncé pour le moment.</p>}
+      </div>
+      <a class="more" href={url('vie-locale/evenements/')}>Voir tout l’agenda <Icon name="arrow" size={16} /></a>
+    </section>
+
+    <section class="mairie-card" aria-labelledby="la-mairie">
+      <div class="mairie-info">
+        <h2 class="h-ico" id="la-mairie"><Icon name="pin" size={26} />La mairie</h2>
+        <p class="mi"><Icon name="pin" size={18} /><span>{mairie.adresse[0]}<br />{mairie.adresse[1]}</span></p>
+        <div class="mi"><Icon name="clock" size={18} /><span><b>Horaires d’ouverture</b>
+          {mairie.horaires.map((h) => <span class="h">{h.jour} : {h.heures}{h.note && ` (${h.note})`}</span>)}
+        </span></div>
+        <p class="mi"><Icon name="phone" size={18} /><a href={mairie.telephoneHref}>{mairie.telephone}</a></p>
+        <p class="mi"><Icon name="mail" size={18} /><a href={`mailto:${mairie.email}`}>{mairie.email}</a></p>
+        <a class="btn btn-primary" href={url('contact/')}>Nous contacter</a>
+      </div>
+      <div class="mairie-photo">
+        <Image src={photoMairie} alt="La mairie de Sassy et le monument aux morts" widths={[500, 800]} sizes="(max-width: 900px) 100vw, 320px" />
       </div>
     </section>
   </div>
+
+  <section class="discover-band" aria-labelledby="decouvrir">
+    <svg class="hills" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 120 C200 70 380 150 620 110 S1040 60 1440 110 V200 H0Z" fill="#cfe2d4" />
+      <path d="M0 150 C240 110 460 170 760 140 S1180 110 1440 150 V200 H0Z" fill="#9fc6aa" />
+      <path d="M0 175 C300 150 560 195 880 172 S1260 160 1440 180 V200 H0Z" fill="#6fa47e" />
+    </svg>
+    <div class="wrap discover-inner">
+      <h2 class="h-ico" id="decouvrir"><Icon name="leaf" size={26} />Découvrir Sassy</h2>
+      <p>Une commune, une histoire, un patrimoine : du « Châtelet » médiéval aux Vauquelin et à l’église du XIIᵉ siècle.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href={url('decouvrir/histoire/')}>Découvrir le village <Icon name="arrow" size={16} /></a>
+        <a class="btn btn-secondary" href={url('decouvrir/carte/')}>Carte</a>
+      </div>
+    </div>
+  </section>
 </Base>

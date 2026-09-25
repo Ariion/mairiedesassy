@@ -5,7 +5,7 @@ import { affichageRecent } from '../../data/queries';
 
 const crs = (await affichageRecent()).filter((e) => e.data.type === 'Compte rendu');
 ---
-<Page section="Mairie" title="Comptes rendus de réunion" lead="Les comptes rendus des séances du conseil municipal, du plus récent au plus ancien.">
+<Page section="La mairie" title="Comptes rendus de réunion" lead="Les comptes rendus des séances du conseil municipal, du plus récent au plus ancien.">
   {crs.length ? <div class="list-card"><div class="rows">{crs.map((e) => <NoticeRow entry={e} />)}</div></div> : <p class="empty">Aucun compte rendu publié pour le moment.</p>}
   <p class="note">Les séances du conseil municipal sont publiques. Les dates des prochaines séances sont annoncées à l’affichage.</p>
 </Page>

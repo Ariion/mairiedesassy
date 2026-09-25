@@ -26,49 +26,47 @@ export const mairie = {
 export type NavItem = { label: string; href: string };
 export type NavSection = { label: string; short: string; href: string; items: NavItem[] };
 
-/** Arborescence du site (option 1a de la maquette) : 5 rubriques. */
+/** Arborescence du site : 4 menus déroulants (structure de la maquette « mairie »). */
 export const nav: NavSection[] = [
   {
-    label: 'Mairie', short: 'Mairie', href: 'mairie/',
+    label: 'La mairie', short: 'Mairie', href: 'mairie/',
     items: [
-      { label: 'Infos mairie', href: 'mairie/' },
+      { label: 'Infos et horaires', href: 'mairie/' },
+      { label: 'Le conseil municipal', href: 'mairie/conseil-municipal/' },
       { label: 'Affichage mairie', href: 'mairie/affichage/' },
       { label: 'Comptes rendus de réunion', href: 'mairie/comptes-rendus/' },
-      { label: 'Le conseil municipal', href: 'mairie/conseil-municipal/' },
       { label: 'Location de salle', href: 'mairie/location-de-salle/' },
+      { label: 'Nous contacter', href: 'contact/' },
     ],
   },
   {
-    label: 'École & cantine', short: 'École', href: 'ecole/menu-cantine/',
+    label: 'Démarches', short: 'Démarches', href: 'demarches/etat-civil/',
     items: [
-      { label: 'Menu cantine', href: 'ecole/menu-cantine/' },
+      { label: 'État civil', href: 'demarches/etat-civil/' },
+      { label: 'Urbanisme', href: 'demarches/urbanisme/' },
+      { label: 'École et cantine', href: 'ecole/menu-cantine/' },
       { label: 'SIVOM (association de l’école)', href: 'ecole/sivom/' },
+      { label: 'Cimetière', href: 'demarches/cimetiere/' },
+      { label: 'Informations utiles', href: 'contact/informations-utiles/' },
     ],
   },
   {
-    label: 'Vie locale', short: 'Vie locale', href: 'vie-locale/evenements/',
+    label: 'Vie locale', short: 'Vie locale', href: 'vie-locale/blog/',
     items: [
-      { label: 'Événements', href: 'vie-locale/evenements/' },
-      { label: 'Blog', href: 'vie-locale/blog/' },
+      { label: 'Actualités', href: 'vie-locale/blog/' },
+      { label: 'Agenda', href: 'vie-locale/evenements/' },
       { label: 'Revue mensuelle', href: 'vie-locale/revue-mensuelle/' },
       { label: 'Revue trimestrielle', href: 'vie-locale/revue-trimestrielle/' },
       { label: 'Annuaire professionnel', href: 'vie-locale/annuaire/' },
     ],
   },
   {
-    label: 'Découvrir', short: 'Découvrir', href: 'decouvrir/histoire/',
+    label: 'Découvrir Sassy', short: 'Découvrir', href: 'decouvrir/histoire/',
     items: [
       { label: 'Histoire du village', href: 'decouvrir/histoire/' },
       { label: 'Association patrimoine', href: 'decouvrir/patrimoine/' },
       { label: 'Photos', href: 'decouvrir/photos/' },
-      { label: 'Carte de la ville', href: 'decouvrir/carte/' },
-    ],
-  },
-  {
-    label: 'Contact', short: 'Contact', href: 'contact/',
-    items: [
-      { label: 'Nous écrire', href: 'contact/' },
-      { label: 'Informations utiles', href: 'contact/informations-utiles/' },
+      { label: 'Carte de la commune', href: 'decouvrir/carte/' },
     ],
   },
 ];

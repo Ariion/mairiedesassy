@@ -1,0 +1,33 @@
+---
+import Page from '../../layouts/Page.astro';
+import { mairie } from '../../data/site';
+import { url } from '../../data/url';
+
+const demarches = [
+  { t: 'Acte de naissance, de mariage ou de décès', d: 'Demande gratuite auprès de la mairie du lieu de l’événement, en ligne, par courrier ou au guichet.', href: 'https://www.service-public.fr/particuliers/vosdroits/N359' },
+  { t: 'Déclaration de naissance', d: 'Dans les 5 jours suivant la naissance, à la mairie du lieu de naissance (souvent faite à la maternité).', href: 'https://www.service-public.fr/particuliers/vosdroits/F961' },
+  { t: 'Mariage', d: 'Dossier à retirer et déposer en mairie plusieurs semaines avant la date : pièces d’identité, justificatifs de domicile, actes de naissance, témoins.', href: 'https://www.service-public.fr/particuliers/vosdroits/F930' },
+  { t: 'PACS', d: 'Enregistrement en mairie, sur rendez-vous, ou chez un notaire.', href: 'https://www.service-public.fr/particuliers/vosdroits/F1618' },
+  { t: 'Décès', d: 'Déclaration dans les 24 heures à la mairie du lieu du décès, généralement faite par les pompes funèbres.', href: 'https://www.service-public.fr/particuliers/vosdroits/F1446' },
+  { t: 'Recensement citoyen', d: 'Obligatoire à 16 ans, en mairie ou en ligne. L’attestation est demandée pour les examens et le permis.', href: 'https://www.service-public.fr/particuliers/vosdroits/F870' },
+  { t: 'Carte d’identité et passeport', d: 'Pré-demande sur ants.gouv.fr, puis rendez-vous dans une mairie équipée d’un dispositif de recueil (à Falaise, par exemple).', href: 'https://ants.gouv.fr' },
+  { t: 'Inscription sur les listes électorales', d: 'En mairie ou en ligne, avec une pièce d’identité et un justificatif de domicile.', href: 'https://www.service-public.fr/particuliers/vosdroits/R16396' },
+];
+---
+<Page section="Démarches" title="État civil" lead="Naissance, mariage, PACS, décès, papiers d’identité : les démarches courantes et où les faire.">
+  <div class="layout-aside">
+    <div class="cards">
+      {demarches.map((d) => (
+        <div class="card-line"><h3><a href={d.href}>{d.t}</a></h3><p>{d.d}</p></div>
+      ))}
+    </div>
+    <aside>
+      <div class="box box-green">
+        <h2>Au secrétariat de mairie</h2>
+        <p>Pour toute question ou pour retirer un dossier, venez aux permanences : lundi 11h–12h, jeudi 14h–15h, samedi 8h–12h sur rendez-vous.</p>
+        <p><a href={mairie.telephoneHref}>{mairie.telephone}</a><br /><a href={`mailto:${mairie.email}`}>{mairie.email}</a></p>
+        <a class="btn btn-primary" href={url('contact/')}>Nous contacter</a>
+      </div>
+    </aside>
+  </div>
+</Page>

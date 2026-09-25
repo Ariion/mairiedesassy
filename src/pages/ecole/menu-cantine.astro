@@ -7,7 +7,7 @@ const menus = (await getCollection('menus')).sort((a, b) => +b.data.semaine - +a
 const [courant, ...anciens] = menus;
 const fin = (d: Date) => new Date(+d + 4 * 864e5);
 ---
-<Page section="École & cantine" title="Menu de la cantine" lead="Les repas de la semaine servis aux élèves du SIVOM, du lundi au vendredi (hors mercredi).">
+<Page section="Démarches" title="Menu de la cantine" lead="Les repas de la semaine servis aux élèves du SIVOM, du lundi au vendredi (hors mercredi).">
   {courant ? (
     <section class="section">
       <div class="sec-head"><h2>Semaine du {dateLongue(courant.data.semaine, false)} au {dateLongue(fin(courant.data.semaine))}</h2></div>

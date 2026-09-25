@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import { url } from '../data/url';
+
+interface Props { entry: CollectionEntry<'affichage'> }
+const { entry } = Astro.props;
+const d = entry.data;
+const style = {
+  Arrêté: { icon: 'alert', cls: 'red' },
+  'Compte rendu': { icon: 'file', cls: 'blue' },
+  Avis: { icon: 'megaphone', cls: 'gold' },
+  Info: { icon: 'info', cls: 'green' },
+}[d.type];
+---
+<a class="brief" href={url(`mairie/affichage/${entry.id}/`)}>
+  <span class={`brief-ico ${style.cls}`}><Icon name={style.icon} size={18} /></span>
+  <span class="brief-body"><b>{d.titre}</b><span>{d.info}</span></span>
+</a>

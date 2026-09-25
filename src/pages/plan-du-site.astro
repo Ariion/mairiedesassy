@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import { nav } from '../data/site';
+import { url } from '../data/url';
+---
+<Base title="Plan du site">
+  <div class="page-hero"><div class="wrap"><header class="page-head"><h1>Plan du site</h1></header></div></div>
+  <div class="wrap page-body">
+    <div class="cards">
+      <div class="card-line"><h3><a href={url()}>Accueil</a></h3><p><a href={url('recherche/')}>Rechercher</a></p></div>
+      {nav.map((s) => (
+        <div class="card-line">
+          <h3>{s.label}</h3>
+          {s.items.map((i) => <p><a href={url(i.href)}>{i.label}</a></p>)}
+        </div>
+      ))}
+      <div class="card-line"><h3>Informations</h3><p><a href={url('mentions-legales/')}>Mentions légales</a></p><p><a href={url('accessibilite/')}>Accessibilité</a></p></div>
+    </div>
+  </div>
+</Base>

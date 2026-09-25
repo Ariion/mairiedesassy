@@ -6,7 +6,7 @@ import { articlesRecents } from '../../../data/queries';
 const posts = await articlesRecents();
 const auteurs = [...new Set(posts.map((p) => p.data.auteur))];
 ---
-<Page section="Vie locale" title="Le blog du village" lead="Les nouvelles de Sassy, racontées par la mairie et les associations du village.">
+<Page section="Vie locale" title="Actualités" lead="Les nouvelles de Sassy, racontées par la mairie et les associations du village.">
   <div class="filters" role="group" aria-label="Filtrer par auteur">
     <button class="chip" type="button" data-filter="" aria-current="true">Tous</button>
     {auteurs.map((a) => <button class="chip" type="button" data-filter={a}>{a}</button>)}

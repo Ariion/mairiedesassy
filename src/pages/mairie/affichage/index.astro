@@ -8,7 +8,7 @@ const all = await affichageRecent();
 const types = ['Arrêté', 'Compte rendu', 'Avis', 'Info'] as const;
 const annees = [...new Set(all.map((e) => e.data.date.getFullYear()))];
 ---
-<Page section="Mairie" title="Affichage mairie" lead="Arrêtés, comptes rendus, avis et informations : l’affichage municipal, consultable aussi en mairie.">
+<Page section="La mairie" title="Affichage mairie" lead="Arrêtés, comptes rendus, avis et informations : l’affichage municipal, consultable aussi en mairie.">
   <div class="filters" role="group" aria-label="Filtrer par type">
     <button class="chip" type="button" data-filter="" aria-current="true">Tout</button>
     {types.map((t) => <button class="chip" type="button" data-filter={t}>{t}</button>)}
