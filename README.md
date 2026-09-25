@@ -37,6 +37,17 @@ Les coordonnées, les horaires et le nom du maire sont regroupés dans `src/data
 
 **Commentaires du blog.** Le formulaire ouvre la messagerie de l’internaute et adresse le message à la mairie. Pour publier un commentaire après modération, l’ajouter à la liste `commentaires` de l’article.
 
+## Module Admin (édition visuelle)
+
+Le [Module Admin](https://github.com/Ariion/Module-admin) (v1.13.1) est installé dans `public/admin/`.
+Ajoutez **`?admin`** à l’adresse de n’importe quelle page (ex. `https://mairiedesassy.vercel.app/?admin`) pour ouvrir l’éditeur : textes, images, liens, sections, ambiance, historique.
+
+- **Configuration** : `public/admin-config.js` (identifiant du site : `mairie-de-sassy`).
+- **Mode démonstration** tant que les 5 clés Firebase ne sont pas renseignées : n’importe quel identifiant ouvre l’éditeur, les modifications restent dans le navigateur.
+- **Mise en production** : créer le projet Firebase et y publier les règles de `firebase/`. Coller ensuite les clés dans `public/admin-config.js`, puis autoriser le domaine `mairiedesassy.vercel.app` dans *Authentication › Settings › Authorized domains*. La marche à suivre complète est dans `docs/INSTALLATION.md` du dépôt Module-admin.
+- **Limites sur Vercel** : pas de téléversement (les images s’ajoutent par adresse) et pas de réécriture automatique du HTML. L’icône ⤓ exporte la page figée.
+- **Mettre le module à jour** : remplacer le dossier `public/admin/` par celui de la nouvelle version.
+
 ## À faire avant la mise en ligne
 
 - [ ] Remplacer les **exemples fictifs** tirés de la maquette : affichage, événements, articles, menu, revues, annuaire. Ils sont signalés par un commentaire `EXEMPLE`.
@@ -47,7 +58,7 @@ Les coordonnées, les horaires et le nom du maire sont regroupés dans `src/data
 - [ ] Fournir des photos en haute définition (≥ 1600 px de large) pour l’accueil, l’histoire et les actualités (champ `image`).
 - [ ] Faire réaliser un audit RGAA et mettre à jour la page Accessibilité.
 - [ ] Ajouter des photos (`src/pages/decouvrir/photos.astro`).
-- [ ] Si des personnes non développeuses doivent publier : brancher Decap CMS sur `src/content/`.
+- [ ] Renseigner les clés Firebase du Module Admin (voir plus haut).
 
 ## Structure
 

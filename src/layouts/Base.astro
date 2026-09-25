@@ -106,5 +106,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       </ul>
     </div>
   </footer>
+
+  <!-- Module Admin : édition du site avec ?admin (voir public/admin-config.js) -->
+  <script is:inline src={url('admin-config.js')}></script>
+  <script is:inline type="module" src={url('admin/runtime.js')}></script>
 </body>
 </html>
