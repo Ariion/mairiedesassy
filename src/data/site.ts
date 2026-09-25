@@ -20,7 +20,8 @@ export const mairie = {
   insee: '14669',
   gentile: 'Sassyens',
   interco: { nom: 'Communauté de communes du Pays de Falaise', url: 'https://www.paysdefalaise.fr/commune/sassy/' },
-  coords: { lat: 48.986, lon: -0.137 },
+  /** Mairie, au carrefour rue de la Forge · rue du Lavoir · rue de la Porte d’Auge. */
+  coords: { lat: 48.98479, lon: -0.13864 },
 };
 
 export type NavItem = { label: string; href: string };
